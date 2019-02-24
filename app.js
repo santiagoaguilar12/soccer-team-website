@@ -4,32 +4,29 @@ var express= require("express");
 var app     =express();
 var bodyParser= require("body-parser");
 
+var playerRoutes    = require("./routes/players"),//requires each route. Onlye the first step of refactoring clean up app.js
+    coachRoutes = require("./routes/coaches"),
+    connection = require('./routes/db');
+    
+    
+    
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 
 
-var connection=mysql.createConnection({
-    host    :"localhost",
-    user    :"santiagoaguilar",
-    database:"soccer_site"
-});
+// var connection=mysql.createConnection({
+//     host    :"localhost",
+//     user    :"santiagoaguilar",
+//     database:"soccer_site"
+// });
 
 app.get("/",function(req,res){
-    res.send("home page");
+   res.render("home");
 });
 
-// app.get("/", function(req,res){
-//     var q="SELECT COUNT(*) AS count FROM users ";
-//     connection.query(q,function(err, result) {
-//       if (err) throw err;
-//       var count=result[0].count;
-//         //  res.send("You've reached the home page. There are "+count+" users");
-         
-//         res.render("home",{count:count});
 
-//     });
-// });
+
 
 
 // app.post("/register", function(req,res){
@@ -57,6 +54,8 @@ app.get("/",function(req,res){
 //     res.send("Random number is: "+num);
 // })
 
+app.use("/players", playerRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
+app.use("/coaches", coachRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
 
 app.listen(process.env.PORT, process.env.IP, function(){//starts server. 
     //process.env.PORT--> uses whatever port is in the environment variable PORT 

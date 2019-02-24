@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+
+<div class="ui horizontal divider">
+</div>
+
+<div class="ui link four container cards stackable">
+<% coaches.forEach(function(coach){ %>
+
+    <div class="card">
+    <div class="image">
+      <img src="<%=coach.image_url %>">
+    </div>
+    <div class="content">
+      <div class="header"><%=coach.first_name %> <%=coach.last_name %></div>
+      <div class="meta">
+        <a><%=coach.team %></a>
+      </div>
+      <div class="description">
+        Matthew is an interior designer living in New York.
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+      <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+    </div>
+  </div>
+
+<% }); %>
+<div class="ui horizontal divider">
+</div>
+
+<% include ./partials/footer %>

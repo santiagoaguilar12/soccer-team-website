@@ -11,13 +11,18 @@ CREATE TABLE players(
     birthday DATE,
     positon VARCHAR(100),
     team VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255) DEFAULT "assets/images/default.png"
+    image_url VARCHAR(255) DEFAULT "/images/default.jpg"
     
 );
 
 INSERT INTO players (first_name, last_name,birthday,positon,team) VALUES  
 ("Santiago", "Aguilar", "2000-03-04", "Midfielder","U21 Boys"),
-("Christian", "Aguilar", "2003-10-10", "Midfielder","U17 Boys");
+("Christian", "Aguilar", "2003-10-10", "Midfielder","U17 Boys"),
+("John", "Aguilar", "1999-04-21", "Defender","U57 Boys"),
+("Dina", "Daza", "1039-10-10", "Goalkeeper","U17 Girls"),
+("Justin", "Robertson", "2000-10-10", "Forward","U21 Boys");
+
+
 
 
 
@@ -29,7 +34,7 @@ CREATE TABLE coaches(
     birthday DATE,
     team VARCHAR(100) NOT NULL,
     title VARCHAR(100),
-    image_url VARCHAR(255) DEFAULT "assets/images/default.png"
+    image_url VARCHAR(255) DEFAULT "/images/default.jpg"
 
     
 );
