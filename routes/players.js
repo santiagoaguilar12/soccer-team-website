@@ -6,7 +6,7 @@ var express = require("express"),//requires express
 
 
 router.get("/",function(req,res){
-    var q = "SELECT * FROM players;";
+    var q = "SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id;";
     connection.query(q,function(err, result) {
       if (err) throw err;
       var players=result;
