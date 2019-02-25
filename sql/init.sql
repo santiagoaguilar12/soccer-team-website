@@ -4,46 +4,85 @@ CREATE DATABASE soccer_site;
 
 USE soccer_site;
 
-CREATE TABLE players(
+CREATE TABLE persons(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    birthday DATE,
-    positon VARCHAR(100),
-    team VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255) DEFAULT "/images/default.jpg"
+    image_url VARCHAR(255) DEFAULT "/images/default.jpg",
+    role VARCHAR(50) NOT NULL,
+    gender VARCHAR(10),
+    email VARCHAR(100),
+    city VARCHAR(50),
+    phone VARCHAR(15)
+    
     
 );
 
-INSERT INTO players (first_name, last_name,birthday,positon,team) VALUES  
-("Santiago", "Aguilar", "2000-03-04", "Midfielder","U21 Boys"),
-("Christian", "Aguilar", "2003-10-10", "Midfielder","U17 Boys"),
-("John", "Aguilar", "1999-04-21", "Defender","U57 Boys"),
-("Dina", "Daza", "1039-10-10", "Goalkeeper","U17 Girls"),
-("Justin", "Robertson", "2000-10-10", "Forward","U21 Boys");
+CREATE TABLE athletes(
+    person_id INTEGER,
+    birthday DATE,
+    primary_positon VARCHAR(100),
+    secondary_position VARCHAR(100),
+    team VARCHAR(100) NOT NULL,
+    prefer_foot VARCHAR(10),
+    height_in_m  DECIMAL(3,2) UNSIGNED,
+    weight_in_kg  DECIMAL(3,1) UNSIGNED,
+    jersey_num  INTEGER(3) UNSIGNED,
+    video_url VARCHAR(500),
+    profile_doc VARCHAR(255),
+    FOREIGN KEY(person_id) REFERENCES persons(id)
+
+);
 
 
-
-
-
+CREATE TABLE students(
+    person_id INTEGER,
+    school_type VARCHAR(255),
+    school_name VARCHAR(255),
+    grad_year YEAR,
+    sat_score INTEGER(4),
+    act_score INTEGER(2),
+    gpa DECIMAL(2,1),
+    FOREIGN KEY(person_id) REFERENCES persons(id)
+);
 
 CREATE TABLE coaches(
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    birthday DATE,
-    team VARCHAR(100) NOT NULL,
-    title VARCHAR(100),
-    image_url VARCHAR(255) DEFAULT "/images/default.jpg"
-
-    
+    person_id INTEGER,
+    role VARCHAR(50),
+    team VARCHAR(100),
+    FOREIGN KEY(person_id) REFERENCES persons(id)
 );
 
-INSERT INTO coaches (first_name, last_name,birthday,team, title) VALUES  
-("Junior", "Groves", "1970-11-24", "U21 Boys","Head Coach"),
-("Franco", "Iabone", "1975-05-17", "U18 Boys","Assistant Coach");
+CREATE TABLE accomplishments(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    person_id INTEGER,
+    name_acc VARCHAR(150),
+    text_acc VARCHAR(255),
+    FOREIGN KEY(person_id) REFERENCES persons(id)
+);
+
+INSERT INTO persons (first_name, last_name, role, gender, email, city, phone) VALUES
+("Santiago", "Aguilar", "athlete", "Male","santiago2000aguilar@gmail.com", "Whitby", "2893146402"),
+("Dina", "Daza", "athlete", "female","dina@gmail.com", "Whitby", "2893146402"),
+("John", "Aguilar", "athlete", "Male","john@gmail.com", "Whitby", "2893146402"),
+("Christian", "Aguilar", "athlete", "Male","christian@gmail.com", "Whitby", "2893146402"),
+("Junior", "Groves", "coach", "Male","groves@gmail.com", "Pickering", "2893146402"),
+("Franco", "Iabone", "coach", "Male","franco@gmail.com", "Whitby", "2893146402");
+
+INSERT INTO athletes (person_id, birthday ,primary_positon,team,video_url) VALUES  
+("1", "2000-03-04", "Midfielder","U21 Boys","youtube.com"),
+("4", "2003-10-10", "Midfielder","U17 Boys","youtube.com"),
+("3", "1999-04-21", "Defender","U57 Boys","youtube.com"),
+("2", "1039-10-10", "Goalkeeper","U17 Girls","youtube.com");
+
+INSERT INTO students (person_id, school_type, grad_year, school_name) VALUES
+("1", "University", "2023", "University of Waterloo"),
+("4", "High School", "2021", "All Saints CSS");
+
+INSERT INTO coaches (person_id, role, team) VALUES
+("5", "Director", "Academy"),
+("6", "Assistant Coach", "U21 Boys");
 
 
 
-SELECT * FROM players;
-SELECT * FROM coaches;
+SELECT * FROM persons;
