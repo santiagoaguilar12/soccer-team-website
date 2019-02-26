@@ -1,14 +1,15 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <h1>Players</h1>
+
 <!--<div class="container"> </div>-->
 <div class="ui link four container cards stackable">
 <% players.forEach(function(player){ %>
-
-    <div class="card">
-    <div class="image">
+    <!--<a href="/players/<%=player.id %>">-->
+    <div class="card" >
+    <a class="image" href="/players/<%=player.id %>">
       <img src="<%=player.image_url %>">
-    </div>
+    </a>
     <div class="content">
       <div class="header"><%=player.first_name %> <%=player.last_name %></div>
       <div class="meta">
@@ -28,10 +29,11 @@
       </span>
     </div>
   </div>
+  <!--</a>-->
     <!--<img src="<%=player.image_url %>">-->
     <!--<h3> <%=player.first_name %> <%=player.last_name %></h3>-->
     
 <% }); %>
 
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>

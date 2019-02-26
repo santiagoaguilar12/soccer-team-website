@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <h1>Coaches</h1>
 
@@ -9,9 +9,9 @@
 <% coaches.forEach(function(coach){ %>
 
     <div class="card">
-    <div class="image">
+    <a class="image" href="coaches/<%=coach.id %>">
       <img src="<%=coach.image_url %>">
-    </div>
+    </a>
     <div class="content">
       <div class="header"><%=coach.first_name %> <%=coach.last_name %></div>
       <div class="meta">
@@ -36,4 +36,4 @@
 <div class="ui horizontal divider">
 </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>
