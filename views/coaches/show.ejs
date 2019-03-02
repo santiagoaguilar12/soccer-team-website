@@ -1,8 +1,66 @@
+
+
 <% include ../partials/header %>
 
-<h1><%=coach.first_name %> <%=coach.last_name %></h1>
+<div class=" ui grid container">
+    <div class="row">
+        <div class="four wide column">
+                  <img class="ui image bordered medium" src="<%=coach.image_url %>">
+
+        </div>
+        <div class=" twelve wide column">
+            <h1><%=coach.jersey_num %><%=coach.first_name %> <%=coach.last_name %></h1>
+            <div class="ui middle aligned divided list">
+                <div class="item">
+            
+                    <div class="content">
+                            <p class="header">Position: <%=coach.team %></p>
+                    </div>
+                 </div>
+                <div class="item">
+                    <div class="content">
+                        <p class="header">Team: <%=coach.primary_positon %></p>
+                    </div>
+                </div>
+                  <div class="item">
+                    <div class="content">
+                      <p class="header">Education: <%=coach.school_type %></p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="content">
+                      <p class="header">Email: <%=coach.email %></p>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui tabular menu ">
+            <a class="active item tablinks"  id="defaultOpen" onclick="openTab(event, 'personal_tab')">
+                Personal Info
+            </a>
+           
+            <a class="item tablinks"  onclick="openTab(event, 'accomplishments_tab')">
+                Accomplishments
+             </a>
+        </div>
+    </div>
+    <div class="tabcontent  " id="personal_tab" >
+        <p>Hello 1</p>
+    </div>
+    
+    <div class=" tabcontent" id="accomplishments_tab">
+                <p>Hello 4</p>
+
+    </div>
+    
+</div>
 
 
 
 
 <% include ../partials/footer %>
+
+
