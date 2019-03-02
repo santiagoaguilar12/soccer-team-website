@@ -1,6 +1,72 @@
 <% include ../partials/header %>
 
-<h1><%=player.first_name %> <%=player.last_name %></h1>
+<div class=" ui grid container">
+    <div class="row">
+        <div class="four wide column">
+                  <img class="ui image bordered medium" src="<%=player.image_url %>">
+
+        </div>
+        <div class=" twelve wide column">
+            <h1><%=player.jersey_num %><%=player.first_name %> <%=player.last_name %></h1>
+            <div class="ui middle aligned divided list">
+                <div class="item">
+            
+                    <div class="content">
+                            <p class="header">Position: <%=player.team %></p>
+                    </div>
+                 </div>
+                <div class="item">
+                    <div class="content">
+                        <p class="header">Team: <%=player.primary_positon %></p>
+                    </div>
+                </div>
+                  <div class="item">
+                    <div class="content">
+                      <p class="header">Education: <%=player.school_type %></p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="content">
+                      <p class="header">Email: <%=player.email %></p>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui tabular menu ">
+            <a class="active item tablinks"  id="defaultOpen" onclick="openTab(event, 'personal_tab')">
+                Personal Info
+            </a>
+            <a class=" item tablinks"   onclick="openTab(event, 'athletic_tab')">
+                Athletic Info
+            </a>
+            <a class=" item tablinks"  onclick="openTab(event, 'academic_tab')" >
+                Academic Info
+            </a>
+            <a class="item tablinks"  onclick="openTab(event, 'accomplishments_tab')">
+                Accomplishments
+             </a>
+        </div>
+    </div>
+    <div class="tabcontent  " id="personal_tab" >
+        <p>Hello 1</p>
+    </div>
+    <div class=" tabcontent" id="athletic_tab" >
+                <p>Hello 2</p>
+
+    </div>
+    <div class=" tabcontent" id="academic_tab">
+                <p>Hello 3</p>
+
+    </div>
+    <div class=" tabcontent" id="accomplishments_tab">
+                <p>Hello 4</p>
+
+    </div>
+    
+</div>
 
 
 
