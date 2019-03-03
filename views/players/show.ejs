@@ -170,7 +170,12 @@
 
     </div>
     <div class=" tabcontent" id="accomplishments_tab">
-                <p>Hello 4</p>
+            <% accomplishments.forEach(function(accomplishment){ %>
+            <h3> <%=accomplishment.name_acc %></h3>
+            <p> <%=accomplishment.date_acc %></p>
+            <p> <%=accomplishment.text_acc %></p>
+            <div class="ui divider"></div>
+            <% }) %>
 
     </div>
     

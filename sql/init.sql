@@ -58,6 +58,7 @@ CREATE TABLE accomplishments(
     person_id INTEGER,
     name_acc VARCHAR(150),
     text_acc VARCHAR(255),
+    date_acc YEAR,
     FOREIGN KEY(person_id) REFERENCES persons(id)
 );
 
@@ -83,6 +84,10 @@ INSERT INTO coaches (person_id, role, team) VALUES
 ("5", "Director", "Academy"),
 ("6", "Assistant Coach", "U21 Boys");
 
-
+INSERT INTO accomplishments (person_id,name_acc, text_acc, date_acc) VALUES
+("1","Honour Roll","Maintained an 80 average throughout high school","2018"),
+("1","Math Council","Founded Math Council","2017"),
+("5","Player of the Year","Was named player of the year in Jamaica","1970"),
+("1","SAT Subject Test","Perfect Scores in Math II and Physics","2018");
 
 SELECT * FROM persons;
