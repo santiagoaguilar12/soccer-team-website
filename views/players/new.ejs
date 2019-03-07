@@ -1,0 +1,194 @@
+<% include ../partials/header %>
+
+<h1>Players</h1>
+
+<div class="ui container">
+    <form class="ui form" action="/players" method="POST">
+        <div>
+            <h2>Personal Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="person[first_name]" placeholder="First Name">
+                      </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" name="person[last_name]" placeholder="Last Name">
+                    </div>
+                    <div class="field">
+                      <label>Gender</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="person[gender]">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Gender</div>
+                          <div class="menu">
+                              <div class="item" value="M">Male</div>
+                              <div class="item" value="F">Female</div>
+                              <div class="item" value="O">Other</div>
+                          </div>
+                      </div>
+                  </div>
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Role</label>
+                        <input type="text" name="person[role]" value="Player" disabled>
+                      </div>
+                      <div class="field">
+                        <label>Image Url</label>
+                        <input type="text" name="person[image_url]" placeholder="Image URL">
+                  </div>
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Email</label>
+                        <input type="Email" name="person[email]" placeholder="email">
+                      </div>
+                      <div class="field">
+                        <label>Hometown</label>
+                        <input type="text" name="person[city]" placeholder="City">
+                  </div>
+                  <div class="field">
+                        <label>Phone</label>
+                        <input type="text" name="person[phone]" placeholder="(No symbols or spaces)">
+                  </div>
+              </div>
+                
+        </div>
+        <div>
+            <h2>Athletic Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>Team</label>
+                        <input type="text" name="athlete[team]" placeholder="Team">
+                      </div>
+                    <div class="field">
+                        <label>Primary Position</label>
+                        <input type="text" name="athlete[primary_positon]" placeholder="Position">
+                    </div>
+                    <div class="field">
+                        <label>Secondary Position</label>
+                        <input type="text" name="athlete[secondary_position]" placeholder="Secondary Position">
+                    </div>
+                     <div class="field">
+                      <label>Preferred Foot</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="gender">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Preferred Foot</div>
+                          <div class="menu">
+                              <div class="item" value="R">Right</div>
+                              <div class="item" value="L">Left</div>
+                              <div class="item" value="B">Both</div>
+                          </div>
+                      </div>
+                  </div>
+                    
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>DOB</label>
+                        <input type="date" name="athlete[birthday]" placeholder="YYYY-MM-DD">
+                      </div>
+                      <div class="field">
+                        <label>Height (m)</label>
+                        <input type="text" name="athlete[height_in_m]" placeholder="Height">
+                  </div>
+                  <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="text" name="athlete[weight_in_kg]" placeholder="Weight">
+                  </div>
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Jersey #</label>
+                        <input type="text" name="athlete[jersey_num]" placeholder="#">
+                      </div>
+                      <div class="field">
+                        <label>Video URL</label>
+                        <input type="text" name="athlete[video_url]" placeholder="Youtube, Vimeo...">
+                  </div>
+                  <div class="field">
+                        <label>Profile Document</label>
+                        <input type="file" name="athlete[profile_doc]" placeholder="File to Upload">
+                  </div>
+              </div>
+                
+        </div class="fields">
+        
+            <div class="field">
+                <label>Is this person currently a student?</label>
+
+                <input type="radio" name="student_if" value="student" > Yes<br>
+                <input type="radio" name="student_if" value="not_student"> No<br>
+            </div>
+          
+        
+        <div>
+            <h2>Academic Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>Team</label>
+                        <input type="text" name="athlete[team]" placeholder="Team">
+                      </div>
+                    <div class="field">
+                        <label>Primary Position</label>
+                        <input type="text" name="athlete[primary_positon]" placeholder="Position">
+                    </div>
+                    <div class="field">
+                        <label>Secondary Position</label>
+                        <input type="text" name="athlete[secondary_position]" placeholder="Secondary Position">
+                    </div>
+                     <div class="field">
+                      <label>Preferred Foot</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="gender">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Preferred Foot</div>
+                          <div class="menu">
+                              <div class="item" value="R">Right</div>
+                              <div class="item" value="L">Left</div>
+                              <div class="item" value="B">Both</div>
+                          </div>
+                      </div>
+                  </div>
+                    
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>DOB</label>
+                        <input type="date" name="athlete[birthday]" placeholder="YYYY-MM-DD">
+                      </div>
+                      <div class="field">
+                        <label>Height (m)</label>
+                        <input type="text" name="athlete[height_in_m]" placeholder="Height">
+                  </div>
+                  <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="text" name="athlete[weight_in_kg]" placeholder="Weight">
+                  </div>
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Jersey #</label>
+                        <input type="text" name="athlete[jersey_num]" placeholder="#">
+                      </div>
+                      <div class="field">
+                        <label>Video URL</label>
+                        <input type="text" name="athlete[video_url]" placeholder="Youtube, Vimeo...">
+                  </div>
+                  <div class="field">
+                        <label>Profile Document</label>
+                        <input type="file" name="athlete[profile_doc]" placeholder="File to Upload">
+                  </div>
+              </div>
+                
+        </div>
+        
+    </form>
+</div>
+
+<% include ../partials/footer %>

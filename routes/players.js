@@ -17,6 +17,10 @@ router.get("/",function(req,res){
     });
 });
 
+router.get("/new", function(req,res){
+    res.render("players/new");
+})
+
 router.get("/:id", function(req, res){
     var id=req.params.id;
     var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
