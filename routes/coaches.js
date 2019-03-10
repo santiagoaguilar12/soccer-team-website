@@ -15,6 +15,45 @@ router.get("/",function(req,res){
     });
 });
 
+router.get("/new", function(req,res){
+    // res.send("HI");
+    res.render("coaches/new");
+});
+
+router.post("/", function(req,res){
+    console.log("*******************************************************");
+    console.log(req.body);
+    console.log("*******************************************************");
+    for(var p in req.body.person){
+
+    	if(req.body.person[p] ===""){
+        delete req.body.person[p];  
+        }
+        
+    };
+    connection.query('INSERT INTO persons SET ?', req.body.person, function(err, result) {
+              if (err) throw err;
+              var person_id_result=result.insertId;
+              console.log(result);
+              req.body.coach.person_id =person_id_result;
+              for(var p in req.body.coach){
+
+                if(req.body.coach[p] ===""){
+                	    delete req.body.coach[p];
+                    }
+                    
+                };
+              connection.query('INSERT INTO coaches SET ?', req.body.coach, function(err, result) {
+                  if (err) throw err;
+                 
+                  console.log(result);
+                });
+        });
+        
+
+    res.redirect("/coaches");
+});
+
 router.get("/:id", function(req, res){
     var id=req.params.id;
     var q="SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id WHERE persons.id ="+id+" ;";
@@ -30,6 +69,8 @@ router.get("/:id", function(req, res){
 
     });
 });
+
+
 
 
 module.exports = router;//exports routes to main app.js file

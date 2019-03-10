@@ -46,7 +46,20 @@ router.post("/", function(req,res){
                 };
               connection.query('INSERT INTO athletes SET ?', req.body.athlete, function(err, result) {
                   if (err) throw err;
-                  
+                  if(req.body.student){
+                         req.body.student.person_id=person_id_result;
+                          for(var p in req.body.athlete){
+
+                                if(req.body.student[p] ===""){
+                                	    delete req.body.student[p];
+                                    }
+                                
+                            };
+                         connection.query('INSERT INTO students SET ?', req.body.student, function(err, result) {
+                          if (err) throw err;
+                        //   console.log(result);
+                        });
+                  }
                   console.log(result);
                 });
         });
