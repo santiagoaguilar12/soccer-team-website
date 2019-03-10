@@ -56,6 +56,13 @@
               </div>
                 
         </div>
+        
+        
+        
+        
+        
+        
+        
         <div>
             <h2>Athletic Info</h2>
                 <div class="fields">
@@ -65,16 +72,55 @@
                       </div>
                     <div class="field">
                         <label>Primary Position</label>
-                        <input type="text" name="athlete[primary_positon]" placeholder="Position">
-                    </div>
+                        <div class="ui selection dropdown">
+                          <input type="hidden" name="athlete[primary_positon]">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Position</div>
+                          <div class="menu">
+                              <div class="item" value="GK">GK</div>
+                              <div class="item" value="DF">DF</div>    
+                              <div class="item" value="MF">MF</div>
+                              <div class="item" value="FW">FW</div>
+                              <div class="item" value="LB">LB</div>
+                              <div class="item" value="CB">CB</div>
+                              <div class="item" value="RB">RB</div>    
+                              <div class="item" value="CDM">CDM</div>
+                              <div class="item" value="CM">CM</div>
+                              <div class="item" value="CAM">CAM</div>
+                              <div class="item" value="LW">LW</div>
+                              <div class="item" value="ST">ST</div>
+                              <div class="item" value="RW">RW</div>
+                          </div>
+                          </div>
+                      </div>
+                    <!--</div>-->
                     <div class="field">
                         <label>Secondary Position</label>
-                        <input type="text" name="athlete[secondary_position]" placeholder="Secondary Position">
+                        <div class="ui selection dropdown">
+                          <input type="hidden" name="athlete[secondary_position]">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Secondary Position</div>
+                          <div class="menu">
+                              <div class="item" value="GK">GK</div>
+                              <div class="item" value="DF">DF</div>    
+                              <div class="item" value="MF">MF</div>
+                              <div class="item" value="FW">FW</div>
+                              <div class="item" value="LB">LB</div>
+                              <div class="item" value="CB">CB</div>
+                              <div class="item" value="RB">RB</div>    
+                              <div class="item" value="CDM">CDM</div>
+                              <div class="item" value="CM">CM</div>
+                              <div class="item" value="CAM">CAM</div>
+                              <div class="item" value="LW">LW</div>
+                              <div class="item" value="ST">ST</div>
+                              <div class="item" value="RW">RW</div>
+                          </div>
+                          </div>
                     </div>
                      <div class="field">
                       <label>Preferred Foot</label>
                       <div class="ui selection dropdown">
-                          <input type="hidden" name="gender">
+                          <input type="hidden" name="athlete[prefer_foot]">
                           <i class="dropdown icon"></i>
                           <div class="default text">Preferred Foot</div>
                           <div class="menu">
@@ -115,79 +161,72 @@
                         <input type="file" name="athlete[profile_doc]" placeholder="File to Upload">
                   </div>
               </div>
-                
-        </div class="fields">
+        </div>     
         
-            <div class="field">
+        
+        
+        
+        <div class="fields">
+        
+            <div class="field" id="if_student_div">
                 <label>Is this person currently a student?</label>
 
-                <input type="radio" name="student_if" value="student" > Yes<br>
-                <input type="radio" name="student_if" value="not_student"> No<br>
+                <input type="radio" id="yes_check" name="student_if" value="student" > Yes<br>
+                <input type="radio" id="no_check" name="student_if" value="not_student"> No<br>
             </div>
-          
+          </div>
         
-        <div>
+        
+        
+        
+        
+        
+        <div id="academic_info_fill">
             <h2>Academic Info</h2>
                 <div class="fields">
                    <div class="field">
-                        <label>Team</label>
-                        <input type="text" name="athlete[team]" placeholder="Team">
-                      </div>
-                    <div class="field">
-                        <label>Primary Position</label>
-                        <input type="text" name="athlete[primary_positon]" placeholder="Position">
-                    </div>
-                    <div class="field">
-                        <label>Secondary Position</label>
-                        <input type="text" name="athlete[secondary_position]" placeholder="Secondary Position">
-                    </div>
-                     <div class="field">
-                      <label>Preferred Foot</label>
-                      <div class="ui selection dropdown">
-                          <input type="hidden" name="gender">
+                        <label>School Type</label>
+                        <div class="ui selection dropdown">
+                          <input type="hidden" name="student[school_type]">
                           <i class="dropdown icon"></i>
-                          <div class="default text">Preferred Foot</div>
+                          <div class="default text">Education Type</div>
                           <div class="menu">
-                              <div class="item" value="R">Right</div>
-                              <div class="item" value="L">Left</div>
-                              <div class="item" value="B">Both</div>
+                              <div class="item" value="Elementary">Elementary</div>
+                              <div class="item" value="High School">High School</div>
+                              <div class="item" value="University">University</div>
                           </div>
                       </div>
-                  </div>
+                      </div>
+                    <div class="field">
+                        <label>School Name</label>
+                        <input type="text" name="student[school_name]" placeholder="Institution Name">
+                    </div>
+                    <div class="field">
+                        <label>Graduation Year</label>
+                        <input type="text" name="student[grad_year]" placeholder="20XX">
+                    </div>
+                     
                     
                         
               </div>
               <div class="fields">
                   <div class="field">
-                        <label>DOB</label>
-                        <input type="date" name="athlete[birthday]" placeholder="YYYY-MM-DD">
+                        <label>SAT</label>
+                        <input type="text" name="student[sat_score]" placeholder="/1600">
                       </div>
                       <div class="field">
-                        <label>Height (m)</label>
-                        <input type="text" name="athlete[height_in_m]" placeholder="Height">
+                        <label>GPA </label>
+                        <input type="text" name="student[gpa]" placeholder="/4.0">
                   </div>
                   <div class="field">
-                        <label>Weight (kg)</label>
-                        <input type="text" name="athlete[weight_in_kg]" placeholder="Weight">
+                        <label>ACT</label>
+                        <input type="text" name="student[act_score]" placeholder="/36">
                   </div>
               </div>
-              <div class="fields">
-                  <div class="field">
-                        <label>Jersey #</label>
-                        <input type="text" name="athlete[jersey_num]" placeholder="#">
-                      </div>
-                      <div class="field">
-                        <label>Video URL</label>
-                        <input type="text" name="athlete[video_url]" placeholder="Youtube, Vimeo...">
-                  </div>
-                  <div class="field">
-                        <label>Profile Document</label>
-                        <input type="file" name="athlete[profile_doc]" placeholder="File to Upload">
-                  </div>
-              </div>
+              
                 
         </div>
-        
+        <button class="ui button" type="submit">Submit</button>
     </form>
 </div>
 

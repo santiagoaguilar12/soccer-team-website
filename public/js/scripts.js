@@ -13,7 +13,16 @@ $(document).ready(function () {
         .dropdown()
     ;
     
-    
+    $("#if_student_div input").click(function(){
+     if( $( "#no_check" ).prop( "checked" )){
+       $("#academic_info_fill input").prop("disabled", true);
+      // alert("input");
+     }
+     if( $( "#yes_check" ).prop( "checked" )) {
+              $("#academic_info_fill input").prop("disabled", false);
+
+     }
+    });
     
     
     
