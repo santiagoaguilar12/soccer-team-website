@@ -21,9 +21,27 @@ router.get("/new", function(req,res){
     res.render("players/new");
 })
 
-// router.post("players", function(req,res){
-//     res.send("To post")
-// })
+router.post("/", function(req,res){
+    console.log("*******************************************************");
+    console.log(req.body);
+    console.log("*******************************************************");
+    connection.query('INSERT INTO persons SET ?', req.body.person, function(err, result) {
+              if (err) throw err;
+              var person_id_result=result.insertId;
+              console.log(result);
+              req.body.athlete.person_id =person_id_result;
+              connection.query('INSERT INTO athletes SET ?', req.body.athlete, function(err, result) {
+                  if (err) throw err;
+                  
+                  console.log(result);
+                });
+        });
+        
+
+    res.redirect("/players");
+});
+
+
 router.get("/:id", function(req, res){
     var id=req.params.id;
     var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
