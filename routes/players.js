@@ -25,11 +25,25 @@ router.post("/", function(req,res){
     console.log("*******************************************************");
     console.log(req.body);
     console.log("*******************************************************");
+    for(var p in req.body.person){
+
+    	if(req.body.person[p] ===""){
+        delete req.body.person[p];  
+        }
+        
+    };
     connection.query('INSERT INTO persons SET ?', req.body.person, function(err, result) {
               if (err) throw err;
               var person_id_result=result.insertId;
               console.log(result);
               req.body.athlete.person_id =person_id_result;
+              for(var p in req.body.athlete){
+
+                if(req.body.athlete[p] ===""){
+                	    delete req.body.athlete[p];
+                    }
+                    
+                };
               connection.query('INSERT INTO athletes SET ?', req.body.athlete, function(err, result) {
                   if (err) throw err;
                   
