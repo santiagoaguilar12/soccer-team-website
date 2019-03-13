@@ -88,4 +88,23 @@ router.get("/:id", function(req, res){
     });
 });
 
+router.get("/:id/edit", function(req, res) {
+    var id=req.params.id;
+    var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
+        // q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
+     connection.query(q,function(err, result) {
+      if (err) throw err;
+      
+      var foundPlayer=result[0];
+    //   var foundAccomplishments=result[1];
+            console.log(foundPlayer);
+
+    //   console.log(foundAccomplishments);
+        //  res.send("You've reached the home page. There are "+count+" users");
+        //  console.log(foundPlayer);
+        res.render("players/edit",{player:foundPlayer});
+
+    });
+});
+
 module.exports = router;//exports routes to main app.js file

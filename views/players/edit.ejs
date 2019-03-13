@@ -1,0 +1,244 @@
+<% include ../partials/header %>
+
+<script>
+ 
+  $(function() {
+        
+         $("#academic_info_fill input").prop("disabled", true);
+          
+      
+  });
+ 
+  </script>
+<div class="ui container">
+    <h1>Player:</h1>
+
+    <form class="ui form" method="POST" action="/players" >
+        <div>
+            <h2>Personal Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="person[first_name]" value="<%=player.first_name %>" placeholder="First Name">
+                      </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" name="person[last_name]" value="<%=player.last_name %>" placeholder="Last Name">
+                    </div>
+                    <div class="field">
+                      <label>Gender</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="person[gender]" value="<%=player.gender %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Gender</div>
+                          <div class="menu">
+                              <div class="item" value="M">Male</div>
+                              <div class="item" value="F">Female</div>
+                              <div class="item" value="O">Other</div>
+                          </div>
+                      </div>
+                  </div>
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Role</label>
+                        <input type="text" name="person[role]" value="athlete" readonly>
+                      </div>
+                      <div class="field">
+                        <label>Image Url</label>
+                        <input type="text" name="person[image_url]" value="<%=player.image_url %>" placeholder="Image URL">
+                  </div>
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Email</label>
+                        <input type="Email" name="person[email]" value="<%=player.email %>" placeholder="email">
+                      </div>
+                      <div class="field">
+                        <label>Hometown</label>
+                        <input type="text" name="person[city]" value="<%=player.city %>" placeholder="City">
+                  </div>
+                  <div class="field">
+                        <label>Phone</label>
+                        <input type="text" name="person[phone]" placeholder="(No symbols or spaces)">
+                  </div>
+              </div>
+                
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        <div>
+            <h2>Athletic Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>Team</label>
+                        <input type="text" name="athlete[team]" placeholder="Team" value="<%=player.team %>">
+                      </div>
+                    <div class="field">
+                        <label>Primary Position</label>
+                        <div class="ui selection dropdown">
+                          <input type="hidden" name="athlete[primary_positon]" value="<%=player.primary_positon %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Position</div>
+                          <div class="menu">
+                              <div class="item" value="GK">GK</div>
+                              <div class="item" value="DF">DF</div>    
+                              <div class="item" value="MF">MF</div>
+                              <div class="item" value="FW">FW</div>
+                              <div class="item" value="LB">LB</div>
+                              <div class="item" value="CB">CB</div>
+                              <div class="item" value="RB">RB</div>    
+                              <div class="item" value="CDM">CDM</div>
+                              <div class="item" value="CM">CM</div>
+                              <div class="item" value="CAM">CAM</div>
+                              <div class="item" value="LW">LW</div>
+                              <div class="item" value="ST">ST</div>
+                              <div class="item" value="RW">RW</div>
+                          </div>
+                          </div>
+                      </div>
+                    <!--</div>-->
+                    <div class="field">
+                        <label>Secondary Position</label>
+                        <div class="ui selection dropdown">
+                          <input type="hidden" name="athlete[secondary_position]" value="<%=player.secondary_position %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Secondary Position</div>
+                          <div class="menu">
+                              <div class="item" value="GK">GK</div>
+                              <div class="item" value="DF">DF</div>    
+                              <div class="item" value="MF">MF</div>
+                              <div class="item" value="FW">FW</div>
+                              <div class="item" value="LB">LB</div>
+                              <div class="item" value="CB">CB</div>
+                              <div class="item" value="RB">RB</div>    
+                              <div class="item" value="CDM">CDM</div>
+                              <div class="item" value="CM">CM</div>
+                              <div class="item" value="CAM">CAM</div>
+                              <div class="item" value="LW">LW</div>
+                              <div class="item" value="ST">ST</div>
+                              <div class="item" value="RW">RW</div>
+                          </div>
+                          </div>
+                    </div>
+                     <div class="field">
+                      <label>Preferred Foot</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="athlete[prefer_foot]" value="<%=player.prefer_foot %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Preferred Foot</div>
+                          <div class="menu">
+                              <div class="item" value="R">Right</div>
+                              <div class="item" value="L">Left</div>
+                              <div class="item" value="B">Both</div>
+                          </div>
+                      </div>
+                  </div>
+                    
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>DOB</label>
+                        <input type="date" name="athlete[birthday]" placeholder="YYYY-MM-DD" value="<%=player.birthday %>">
+                      </div>
+                      <div class="field">
+                        <label>Height (m)</label>
+                        <input type="text" name="athlete[height_in_m]" placeholder="Height" value="<%=player.height_in_m %>">
+                  </div>
+                  <div class="field">
+                        <label>Weight (kg)</label>
+                        <input type="text" name="athlete[weight_in_kg]" placeholder="Weight" value="<%=player.weight_in_kg %>" >
+                  </div>
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Jersey #</label>
+                        <input type="text" name="athlete[jersey_num]" placeholder="#" value="<%=player.jersey_num %>">
+                      </div>
+                      <div class="field">
+                        <label>Video URL</label>
+                        <input type="text" name="athlete[video_url]" placeholder="Youtube, Vimeo..." value="<%=player.video_url %>">
+                  </div>
+                  <div class="field">
+                        <label>Profile Document</label>
+                        <input type="file" name="athlete[profile_doc]" placeholder="File to Upload" value="<%=player.profile_doc %>">
+                  </div>
+              </div>
+        </div>     
+        
+        
+        
+        
+        <div class="fields">
+        
+            <div class="field" id="if_student_div">
+                <label>Is this person currently a student?</label>
+               
+                <input type="radio" id="yes_check" name="student_if" value="student" > Yes<br>
+                <input type="radio" id="no_check" name="student_if" value="not_student"> No<br>
+            </div>
+          </div>
+        
+        
+        
+        
+        
+        
+        <div id="academic_info_fill">
+            <h2>Academic Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>School Type</label>
+                        <div class="ui selection dropdown">
+                          <input type="hidden" name="student[school_type]"  value="<%=player.school_type %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Education Type</div>
+                          <div class="menu">
+                              <div class="item" value="Elementary">Elementary</div>
+                              <div class="item" value="High School">High School</div>
+                              <div class="item" value="University">University</div>
+                          </div>
+                      </div>
+                      </div>
+                    <div class="field">
+                        <label>School Name</label>
+                        <input type="text" name="student[school_name]"  value="<%=player.school_name %>" placeholder="Institution Name">
+                    </div>
+                    <div class="field">
+                        <label>Graduation Year</label>
+                        <input type="text" name="student[grad_year]"  value="<%=player.grad_year %>" placeholder="20XX">
+                    </div>
+                     
+                    
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>SAT</label>
+                        <input type="text" name="student[sat_score]"  value="<%=player.sat_score %>"placeholder="/1600">
+                      </div>
+                      <div class="field">
+                        <label>GPA </label>
+                        <input type="text" name="student[gpa]" value="<%=player.gpa %>" placeholder="/4.0">
+                  </div>
+                  <div class="field">
+                        <label>ACT</label>
+                        <input type="text" name="student[act_score]"  value="<%=player.act_score %>" placeholder="/36">
+                  </div>
+              </div>
+              
+                
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+
+
+<% include ../partials/footer %>
