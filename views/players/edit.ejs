@@ -13,7 +13,7 @@
 <div class="ui container">
     <h1>Player:</h1>
 
-    <form class="ui form" method="POST" action="/players" >
+    <form class="ui form" method="POST" action="/players/<%= player.id %>?_method=PUT" >
         <div>
             <h2>Personal Info</h2>
                 <div class="fields">

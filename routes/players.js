@@ -48,7 +48,7 @@ router.post("/", function(req,res){
                   if (err) throw err;
                   if(req.body.student){
                          req.body.student.person_id=person_id_result;
-                          for(var p in req.body.athlete){
+                          for(var p in req.body.student){
 
                                 if(req.body.student[p] ===""){
                                 	    delete req.body.student[p];
@@ -106,5 +106,51 @@ router.get("/:id/edit", function(req, res) {
 
     });
 });
+
+router.put("/:id", function(req,res){
+    var id=req.params.id;
+     for(var p in req.body.person){
+
+    	if(req.body.person[p] ===""){
+        delete req.body.person[p];  
+        }
+        
+    };
+    connection.query('UPDATE persons SET ? WHERE persons.id = ?', [req.body.person, id], function(err, result) {
+              if (err) throw err;
+            //   var person_id_result=result.insertId;
+              console.log(result);
+            //   req.body.athlete.person_id =person_id_result;
+              for(var p in req.body.athlete){
+
+                if(req.body.athlete[p] ===""){
+                	    delete req.body.athlete[p];
+                    }
+                    
+                };
+              connection.query('UPDATE athletes SET ? WHERE athletes.person_id = ?', [req.body.athlete, id], function(err, result) {
+                  if (err) throw err;
+                  if(req.body.student){
+                        //  req.body.student.person_id=person_id_result;
+                          for(var p in req.body.student){
+
+                                if(req.body.student[p] ===""){
+                                	    delete req.body.student[p];
+                                    }
+                                
+                            };
+                            console.log(req.body.student);
+                         connection.query('UPDATE students SET ? WHERE students.person_id = ?', [req.body.student, id], function(err, result) {
+                          if (err) throw err;
+                        //   console.log(result);
+                        });
+                  }
+                  console.log(result);
+                });
+        });
+        
+
+    res.redirect("/players/"+id);
+})
 
 module.exports = router;//exports routes to main app.js file

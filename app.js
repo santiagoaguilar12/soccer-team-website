@@ -2,6 +2,7 @@
 var mysql = require("mysql");
 var express= require("express");
 var app     =express();
+var methodOverride= require("method-override");//needed for put and delete requests
 var bodyParser= require("body-parser");
 
 var playerRoutes    = require("./routes/players"),//requires each route. Onlye the first step of refactoring clean up app.js
@@ -13,6 +14,7 @@ var playerRoutes    = require("./routes/players"),//requires each route. Onlye t
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));//uses method override and sets the key that will be used to override requests. (normally "_method")
 
 
 // var connection=mysql.createConnection({
