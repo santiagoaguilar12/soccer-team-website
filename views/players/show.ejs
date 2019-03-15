@@ -5,6 +5,12 @@
     <i class="edit icon"></i>
     Edit Player
   </a>
+  <form class="ui form" action="/players/<%= player.id %>?_method=DELETE" method="POST">
+      <button class="ui right labeled icon button">
+    <i class="trash icon"></i>
+    Delete Player
+  </button>
+  </form>
 </div>
 
 <div class=" ui grid container">

@@ -15,6 +15,21 @@ router.get("/",function(req,res){
     });
 });
 
+router.get("/:id", function(req, res){
+    var id=req.params.id;
+    var q="SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id WHERE persons.id ="+id+" ;";
+    q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
+     connection.query(q,function(err, result) {
+      if (err) throw err;
+      var foundCoach=result[0][0];
+      var foundAccomplishments=result[1];
+
+        //  res.send("You've reached the home page. There are "+count+" users");
+         console.log(foundCoach);
+        res.render("coaches/show",{coach:foundCoach, accomplishments:foundAccomplishments});
+
+    });
+});
 router.get("/new", function(req,res){
     // res.send("HI");
     res.render("coaches/new");
@@ -54,21 +69,57 @@ router.post("/", function(req,res){
     res.redirect("/coaches");
 });
 
-router.get("/:id", function(req, res){
+router.get("/:id/edit", function(req, res) {
     var id=req.params.id;
-    var q="SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id WHERE persons.id ="+id+" ;";
-    q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
+    var q="SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id  WHERE persons.id ="+id+" ;";
+        // q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
      connection.query(q,function(err, result) {
       if (err) throw err;
-      var foundCoach=result[0][0];
-      var foundAccomplishments=result[1];
+      
+      var foundCoach=result[0];
+    //   var foundAccomplishments=result[1];
+            console.log(foundCoach);
 
+    //   console.log(foundAccomplishments);
         //  res.send("You've reached the home page. There are "+count+" users");
-         console.log(foundCoach);
-        res.render("coaches/show",{coach:foundCoach, accomplishments:foundAccomplishments});
+        //  console.log(foundPlayer);
+        res.render("coaches/edit",{coach:foundCoach});
 
     });
 });
+
+router.put("/:id", function(req,res){
+    var id=req.params.id;
+     for(var p in req.body.person){
+
+    	if(req.body.person[p] ===""){
+        delete req.body.person[p];  
+        }
+        
+    };
+    connection.query('UPDATE persons SET ? WHERE persons.id = ?', [req.body.person, id], function(err, result) {
+              if (err) throw err;
+            //   var person_id_result=result.insertId;
+              console.log(result);
+            //   req.body.athlete.person_id =person_id_result;
+              for(var p in req.body.coach){
+
+                if(req.body.coach[p] ===""){
+                	    delete req.body.coach[p];
+                    }
+                    
+                };
+              connection.query('UPDATE coaches SET ? WHERE coaches.person_id = ?', [req.body.coach, id], function(err, result) {
+                  if (err) throw err;
+                  
+                  console.log(result);
+                });
+        });
+        
+
+    res.redirect("/coaches/"+id);
+})
+
 
 
 

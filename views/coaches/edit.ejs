@@ -1,0 +1,96 @@
+<% include ../partials/header %>
+
+
+<div class="ui container">
+    <h1>Coaches</h1>
+
+    <form class="ui form" method="POST" action="/coaches/<%=coach.id %>/?_method=PUT" >
+        <div>
+            <h2>Personal Info</h2>
+                <div class="fields">
+                   <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="person[first_name]" value="<%=coach.first_name %>" placeholder="First Name">
+                      </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" name="person[last_name]" value="<%=coach.last_name %>" placeholder="Last Name">
+                    </div>
+                    <div class="field">
+                      <label>Gender</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="person[gender]" value="<%=coach.gender %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Gender</div>
+                          <div class="menu">
+                              <div class="item" value="M">Male</div>
+                              <div class="item" value="F">Female</div>
+                              <div class="item" value="O">Other</div>
+                          </div>
+                      </div>
+                  </div>
+                        
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Role</label>
+                        <input type="text" name="person[role]" value="coach" readonly>
+                      </div>
+                      <div class="field">
+                        <label>Image Url</label>
+                        <input type="text" name="person[image_url]" value="<%=coach.image_url %>" placeholder="Image URL">
+                  </div>
+              </div>
+              <div class="fields">
+                  <div class="field">
+                        <label>Email</label>
+                        <input type="Email" name="person[email]" value="<%=coach.email %>"placeholder="email">
+                      </div>
+                      <div class="field">
+                        <label>Hometown</label>
+                        <input type="text" name="person[city]" value="<%=coach.city %>"placeholder="City" >
+                  </div>
+                  <div class="field">
+                        <label>Phone</label>
+                        <input type="text" name="person[phone]" value="<%=coach.phone %>"placeholder="(No symbols or spaces)">
+                  </div>
+              </div>
+                
+        </div>
+        
+        <div>
+            <h2>Coaching Info</h2>
+             <div class="fields">
+                   <div class="field">
+                        <label>Team</label>
+                        <input type="text" name="coach[team]" placeholder="Team" value="<%=coach.team %>">
+                      </div>
+                      <div class="field">
+                      <label>Coaching Role</label>
+                      <div class="ui selection dropdown">
+                          <input type="hidden" name="coach[role]" value="<%=coach.role %>">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Coaching Role</div>
+                          <div class="menu">
+                              <div class="item" value="HC">Head Coach</div>
+                              <div class="item" value="AC">Assitant Coach</div>
+                              <div class="item" value="DIR">Director</div>
+                              <div class="item" value="TM">Team Manager</div>
+                              <div class="item" value="GKC">Goalkeeper Coach</div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+            
+        </div>
+        
+        
+        
+        
+        
+        
+        <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+
+<% include ../partials/footer %>

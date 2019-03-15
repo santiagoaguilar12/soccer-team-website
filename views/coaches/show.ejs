@@ -2,6 +2,19 @@
 
 <% include ../partials/header %>
 
+<div class="ui right aligned container"> 
+  <a class="ui right labeled icon button" href="/coaches/<%=coach.id %>/edit">
+    <i class="edit icon"></i>
+    Edit Coach
+  </a>
+  <form class="ui form" action="/coaches/<%= coach.id %>?_method=DELETE" method="POST">
+      <button class="ui right labeled icon button" >
+    <i class="trash icon"></i>
+    Delete Coach
+  </button>
+  </form>
+</div>
+
 <div class=" ui grid container">
     <div class="row">
         <div class="four wide column">
