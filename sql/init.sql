@@ -31,6 +31,7 @@ CREATE TABLE athletes(
     video_url VARCHAR(500),
     profile_doc VARCHAR(255),
     FOREIGN KEY(person_id) REFERENCES persons(id)
+    ON DELETE CASCADE
 
 );
 
@@ -44,6 +45,7 @@ CREATE TABLE students(
     act_score INTEGER(2),
     gpa DECIMAL(2,1),
     FOREIGN KEY(person_id) REFERENCES persons(id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE coaches(
@@ -51,6 +53,7 @@ CREATE TABLE coaches(
     role VARCHAR(50),
     team VARCHAR(100),
     FOREIGN KEY(person_id) REFERENCES persons(id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE accomplishments(
@@ -60,6 +63,7 @@ CREATE TABLE accomplishments(
     text_acc VARCHAR(255),
     date_acc YEAR,
     FOREIGN KEY(person_id) REFERENCES persons(id)
+    ON DELETE CASCADE
 );
 
 INSERT INTO persons (first_name, last_name, role, gender, email, city, phone) VALUES

@@ -153,10 +153,13 @@ router.put("/:id", function(req,res){
     res.redirect("/players/"+id);
 });
 
-// router.delete("/:id",function(req,res){
-//     var id=req.params.id;
-//     var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
-    
-// });
+router.delete("/:id",function(req,res){
+    var id=req.params.id;
+    var q="DELETE FROM persons WHERE id = "+id+" ;";
+    connection.query(q, function(err, result) {
+        if (err) throw err;
+    });
+    res.redirect("/players");
+});
 
 module.exports = router;//exports routes to main app.js file

@@ -14,22 +14,6 @@ router.get("/",function(req,res){
 
     });
 });
-
-router.get("/:id", function(req, res){
-    var id=req.params.id;
-    var q="SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id WHERE persons.id ="+id+" ;";
-    q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
-     connection.query(q,function(err, result) {
-      if (err) throw err;
-      var foundCoach=result[0][0];
-      var foundAccomplishments=result[1];
-
-        //  res.send("You've reached the home page. There are "+count+" users");
-         console.log(foundCoach);
-        res.render("coaches/show",{coach:foundCoach, accomplishments:foundAccomplishments});
-
-    });
-});
 router.get("/new", function(req,res){
     // res.send("HI");
     res.render("coaches/new");
@@ -68,6 +52,23 @@ router.post("/", function(req,res){
 
     res.redirect("/coaches");
 });
+
+router.get("/:id", function(req, res){
+    var id=req.params.id;
+    var q="SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id WHERE persons.id ="+id+" ;";
+    q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
+     connection.query(q,function(err, result) {
+      if (err) throw err;
+      var foundCoach=result[0][0];
+      var foundAccomplishments=result[1];
+
+        //  res.send("You've reached the home page. There are "+count+" users");
+         console.log(foundCoach);
+        res.render("coaches/show",{coach:foundCoach, accomplishments:foundAccomplishments});
+
+    });
+});
+
 
 router.get("/:id/edit", function(req, res) {
     var id=req.params.id;
@@ -120,7 +121,14 @@ router.put("/:id", function(req,res){
     res.redirect("/coaches/"+id);
 })
 
-
+router.delete("/:id",function(req,res){
+    var id=req.params.id;
+    var q="DELETE FROM persons WHERE id = "+id+" ;";
+    connection.query(q, function(err, result) {
+        if (err) throw err;
+    });
+    res.redirect("/coaches");
+});
 
 
 
