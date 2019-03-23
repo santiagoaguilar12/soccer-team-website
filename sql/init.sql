@@ -21,7 +21,7 @@ CREATE TABLE persons(
 CREATE TABLE athletes(
     person_id INTEGER,
     birthday DATE,
-    primary_positon VARCHAR(100),
+    primary_position VARCHAR(100),
     secondary_position VARCHAR(100),
     team VARCHAR(100) NOT NULL,
     prefer_foot VARCHAR(10),
@@ -74,7 +74,7 @@ INSERT INTO persons (first_name, last_name, role, gender, email, city, phone) VA
 ("Junior", "Groves", "coach", "Male","groves@gmail.com", "Pickering", "2893146402"),
 ("Franco", "Iabone", "coach", "Male","franco@gmail.com", "Whitby", "2893146402");
 
-INSERT INTO athletes (person_id, birthday ,primary_positon,team,video_url) VALUES  
+INSERT INTO athletes (person_id, birthday ,primary_position,team,video_url) VALUES  
 ("1", "2000-03-04", "Midfielder","U21 Boys","youtube.com"),
 ("4", "2003-10-10", "Midfielder","U17 Boys","youtube.com"),
 ("3", "1999-04-21", "Defender","U57 Boys","youtube.com"),

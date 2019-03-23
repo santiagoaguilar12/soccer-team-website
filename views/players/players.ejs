@@ -2,6 +2,66 @@
 
 <div class="ui container">
   <h1>Players</h1>
+<form class="ui form" action="/players" method="GET">
+  <div class="fields">
+    <div class="field">
+        <label>Sort By</label>
+        <div class="ui selection dropdown">
+            <input type="hidden" name="sort" value="<%=sort %>" onchange="this.form.submit()">
+            <i class="dropdown icon"></i>
+            <div class="default text">Sort By</div>
+            <div class="menu">
+                <div class="item"  data-value="last_name">Last Name</div>
+                <div class="item" data-value="birthday">Age</div>
+                <div class ="item" data-value="primary_position"> Position</div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Filter By</label>
+        <div class="ui selection dropdown">
+            <input type="hidden" name="filter" value="<%=filter %>" onchange="this.form.submit()">
+            <i class="dropdown icon"></i>
+            <div class="default text">Filter By</div>
+            <div class="menu">
+                <div class="item"  data-value="none">None</div>
+                <div class="item"  data-value="U21 Boys">U21 Boys</div>
+                <div class="item" data-value="U17 Boys">U17 Boys</div>
+                <div class ="item" data-value="U17 Girls">U17 Girls</div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  
+</form>
+
+
+<!--<form class="ui form" action="/players" method="GET">-->
+<!--  <div class="fields">-->
+<!--     <div class="field">-->
+<!--      <label>Sort By</label>-->
+<!--      <select class="ui dropdown" name="sort" value="<%=sort %>" id="sort" style="float: left;" onchange="this.form.submit()">-->
+<!--            <option value="">Sort by</option>-->
+<!--          <option value="last_name">Last Name</option>-->
+<!--          <option value="birthday">Age</option>-->
+<!--          <option value="primary_position"> Position </option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div class="field">-->
+<!--      <label>Filter By</label>-->
+<!--      <select class="ui dropdown" name="filter" value="<%=sort %>" id="filter" style="float: left;" onchange="this.form.submit()">-->
+<!--          <option value="">Filter by</option>-->
+<!--          <option value="U21 Boys">U21 Boys</option>-->
+<!--          <option value="U17 Boys">U17 Boys</option>-->
+<!--          <option value="U17 Girls">U17 Girls</option>-->
+<!--      </select>-->
+<!--    </div>-->
+    
+<!--  </div>-->
+ 
+  
+<!--</form>-->
 
 </div>
 <div class="ui right aligned container"> 
@@ -19,12 +79,14 @@
       <img src="<%=player.image_url %>">
     </a>
     <div class="content">
-      <div class="header"><%=player.first_name %> <%=player.last_name %></div>
+      <div class="header"><%=player.first_name %> <strong><%=player.last_name %></strong></div>
       <div class="meta">
         <a><%=player.positon %></a>
       </div>
       <div class="description">
-        Matthew is an interior designer living in New York.
+        <%=player.last_name %>
+        <%=player.birthday %>
+        <%=player.primary_position %>
       </div>
     </div>
     <div class="extra content">

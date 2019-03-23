@@ -6,13 +6,24 @@ var express = require("express"),//requires express
 
 
 router.get("/",function(req,res){
-    var q = "SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id;";
+    var q = "SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id ";
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    if(req.query.filter && req.query.filter != "none"){
+        q+="WHERE team = '"+req.query.filter+"'";
+    }
+    if(req.query.sort){
+        q+=" ORDER BY "+req.query.sort;
+    }else{
+        q+=" ORDER BY last_name;";
+    }
+    console.log(req.query);
+    
     connection.query(q,function(err, result) {
       if (err) throw err;
       var players=result;
         //  res.send("You've reached the home page. There are "+count+" users");
          console.log(players);
-        res.render("players/players",{players:players});
+        res.render("players/players",{players:players, sort:req.query.sort, filter: req.query.filter});
 
     });
 });
