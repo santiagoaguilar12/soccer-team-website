@@ -1,4 +1,5 @@
 module.exports = function(app,mysql,connection,passport){
+    
    app.get("/players/",function(req,res){
     var q = "SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id ";
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -166,6 +167,8 @@ app.delete("/players/:id",function(req,res){
     });
     res.redirect("/players");
 }); 
+
+
 }
 
 

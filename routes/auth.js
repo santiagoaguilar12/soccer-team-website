@@ -9,7 +9,7 @@ app.get('/login', function(req, res) {
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
             successRedirect : '/', // redirect to the secure profile section
-            failureRedirect : 'auth/login', // redirect back to the signup page if there is an error
+            failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
         function(req, res) {
@@ -35,7 +35,7 @@ app.get('/login', function(req, res) {
 	// process the signup form
 	app.post('/register', passport.authenticate('local-signup', {
 		successRedirect : '/', // redirect to the secure profile section
-		failureRedirect : 'auth/register', // redirect back to the signup page if there is an error
+		failureRedirect : '/register', // redirect back to the signup page if there is an error
 		failureFlash : true // allow flash messages
 	}));
 	
@@ -44,6 +44,12 @@ app.get('/login', function(req, res) {
 		req.logout();
 		res.redirect('/');
 	});
+	
+	app.get("/loggedin", isLoggedIn, function(req,res){
+		console.log(req.user);
+    // res.send("you are logged in:" + req.user);
+    res.render("test");
+})
 };
 
 // route middleware to make sure
