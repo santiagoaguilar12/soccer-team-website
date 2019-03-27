@@ -1,11 +1,5 @@
-var express = require("express"),//requires express
-    router  = express.Router(),//uses router instead of app for express
-    mysql = require("mysql"),
-    connection = require('./db');
-
-
-
-router.get("/",function(req,res){
+module.exports = function(app,mysql,connection,passport){
+   app.get("/players/",function(req,res){
     var q = "SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id ";
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     if(req.query.filter && req.query.filter != "none"){
@@ -28,11 +22,11 @@ router.get("/",function(req,res){
     });
 });
 
-router.get("/new", function(req,res){
+app.get("/players/new", function(req,res){
     res.render("players/new");
 })
 
-router.post("/", function(req,res){
+app.post("/players/", function(req,res){
     console.log("*******************************************************");
     console.log(req.body);
     console.log("*******************************************************");
@@ -80,7 +74,7 @@ router.post("/", function(req,res){
 });
 
 
-router.get("/:id", function(req, res){
+app.get("/players/:id", function(req, res){
     var id=req.params.id;
     var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
         q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
@@ -99,7 +93,7 @@ router.get("/:id", function(req, res){
     });
 });
 
-router.get("/:id/edit", function(req, res) {
+app.get("/players/:id/edit", function(req, res) {
     var id=req.params.id;
     var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
         // q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
@@ -118,7 +112,7 @@ router.get("/:id/edit", function(req, res) {
     });
 });
 
-router.put("/:id", function(req,res){
+app.put("/players/:id", function(req,res){
     var id=req.params.id;
      for(var p in req.body.person){
 
@@ -164,13 +158,18 @@ router.put("/:id", function(req,res){
     res.redirect("/players/"+id);
 });
 
-router.delete("/:id",function(req,res){
+app.delete("/players/:id",function(req,res){
     var id=req.params.id;
     var q="DELETE FROM persons WHERE id = "+id+" ;";
     connection.query(q, function(err, result) {
         if (err) throw err;
     });
     res.redirect("/players");
-});
+}); 
+}
 
-module.exports = router;//exports routes to main app.js file
+
+
+
+
+// module.exports = app;//exports routes to main app.js file

@@ -18,6 +18,13 @@ CREATE TABLE persons(
     
 );
 
+CREATE TABLE users(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) UNIQUE,
+    password VARCHAR(100)
+    
+);
+
 CREATE TABLE athletes(
     person_id INTEGER,
     birthday DATE,

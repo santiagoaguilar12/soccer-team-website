@@ -1,21 +1,40 @@
 // var faker = require("faker");
 var mysql = require("mysql");
 var express= require("express");
+var session  = require('express-session');
+var cookieParser = require('cookie-parser');
+// var morgan = require('morgan');
 var app     =express();
 var methodOverride= require("method-override");//needed for put and delete requests
 var bodyParser= require("body-parser");
+// var port     = process.env.PORT || 8080;
+var passport = require('passport');
+var flash    = require('connect-flash');
 
-var playerRoutes    = require("./routes/players"),//requires each route. Onlye the first step of refactoring clean up app.js
-    coachRoutes = require("./routes/coaches"),
-    connection = require('./routes/db');
+require('./config/passport')(passport); // pass passport for configuration
+
+// var playerRoutes    = require("./routes/players"),//requires each route. Onlye the first step of refactoring clean up app.js
+var     coachRoutes = require("./routes/coaches");
+//     connection = require('./routes/db');
+ var connection = require('./routes/db');   
     
-    
-    
+// app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)    
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));//uses method override and sets the key that will be used to override requests. (normally "_method")
 
+// required for passport
+app.use(session({
+	secret: 'idkwhatiamdoing',
+	resave: true,
+	saveUninitialized: true
+ } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 // var connection=mysql.createConnection({
 //     host    :"localhost",
@@ -56,8 +75,9 @@ app.get("/",function(req,res){
 //     res.send("Random number is: "+num);
 // })
 
-app.use("/players", playerRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
+// app.use("/players", playerRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
 app.use("/coaches", coachRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
+require('./routes/players.js')(app,mysql,connection,passport); // load our routes and pass in our app and fully configured passport
 
 app.listen(process.env.PORT, process.env.IP, function(){//starts server. 
     //process.env.PORT--> uses whatever port is in the environment variable PORT 
