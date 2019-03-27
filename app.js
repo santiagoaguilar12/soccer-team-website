@@ -78,7 +78,7 @@ app.get("/",function(req,res){
 // app.use("/players", playerRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
 app.use("/coaches", coachRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
 require('./routes/players.js')(app,mysql,connection,passport); // load our routes and pass in our app and fully configured passport
-
+require('./routes/auth.js')(app,mysql,connection,passport);
 app.listen(process.env.PORT, process.env.IP, function(){//starts server. 
     //process.env.PORT--> uses whatever port is in the environment variable PORT 
     //process.env.ID-->uses whatever IP is in the environment variable ID 
