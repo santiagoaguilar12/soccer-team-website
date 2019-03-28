@@ -21,7 +21,8 @@ CREATE TABLE persons(
 CREATE TABLE users(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) UNIQUE,
-    password VARCHAR(100)
+    password VARCHAR(100),
+    admin BOOLEAN DEFAULT 0
     
 );
 
