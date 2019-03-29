@@ -56,7 +56,7 @@ app.get('/login', function(req, res) {
 function isLoggedIn(req, res, next) {
 
 	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated())
+	if (req.isAuthenticated() && req.user.admin === 1)
 		return next();
 
 	// if they aren't redirect them to the home page
