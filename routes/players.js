@@ -70,6 +70,7 @@ app.post("/players/", function(req,res){
                 });
         });
         
+        req.flash("success", "You have succesfully added a player");
 
     res.redirect("/players");
 });
@@ -108,6 +109,7 @@ app.get("/players/:id/edit", function(req, res) {
     //   console.log(foundAccomplishments);
         //  res.send("You've reached the home page. There are "+count+" users");
         //  console.log(foundPlayer);
+
         res.render("players/edit",{player:foundPlayer});
 
     });
@@ -155,6 +157,7 @@ app.put("/players/:id", function(req,res){
                 });
         });
         
+    req.flash("success", "You have succesfully edited a player");
 
     res.redirect("/players/"+id);
 });
@@ -165,6 +168,8 @@ app.delete("/players/:id",function(req,res){
     connection.query(q, function(err, result) {
         if (err) throw err;
     });
+            req.flash("success", "You have succesfully deleted a player");
+
     res.redirect("/players");
 }); 
 

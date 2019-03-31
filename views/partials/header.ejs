@@ -30,4 +30,11 @@
     </a>
   </div>
 </div>
+ <div class="ui container">
+        <% if(error && error.length >0){ %> <!--if error exists and contains something/not empty. empty is truthy -->
+            <div class="ui red message" role="alert"><%= error %></div> <!--flash message in all routes -->
+        <% }if(success && success.length >0) { %>
+            <div class="ui green message" role="alert"><%= success %></div> <!--flash message in all routes -->
+        <% } %>
+    </div>
     

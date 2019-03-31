@@ -1,8 +1,7 @@
-
-
 <% include ../partials/header %>
 
-<div class="ui right aligned container"> 
+<% if(currentUser && currentUser.admin === 1){ %>
+    <div class="ui right aligned container"> 
   <a class="ui right labeled icon button" href="/coaches/<%=coach.id %>/edit">
     <i class="edit icon"></i>
     Edit Coach
@@ -14,6 +13,9 @@
   </button>
   </form>
 </div>
+<% }%>
+
+
 
 <div class=" ui grid container">
     <div class="row">

@@ -1,13 +1,16 @@
 <% include ../partials/header %>
 
+<% if(currentUser && currentUser.admin === 1){ %>
+    <div class="ui container"> 
+      <h1>Coaches</h1>
+      <a class="ui right labeled icon button" href="/coaches/new">
+        <i class="user plus icon"></i>
+        Add Coach
+      </a>
+    </div>
+<% }%>
 
-<div class="ui container"> 
-<h1>Coaches</h1>
-<a class="ui right labeled icon button" href="/coaches/new">
-  <i class="user plus icon"></i>
-  Add Coach
-</a>
-</div>
+
 
 <div class="ui link four container cards stackable">
 <% coaches.forEach(function(coach){ %>

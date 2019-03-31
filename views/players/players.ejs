@@ -64,12 +64,15 @@
 <!--</form>-->
 
 </div>
-<div class="ui right aligned container"> 
-<a class="ui right labeled icon button" href="/players/new">
-  <i class="user plus icon"></i>
-  Add Player
-</a>
-</div>
+<% if(currentUser && currentUser.admin === 1){ %>
+    <div class="ui right aligned container"> 
+        <a class="ui right labeled icon button" href="/players/new">
+          <i class="user plus icon"></i>
+          Add Player
+        </a>
+    </div>
+<% }%>
+
 <div class="ui link four container cards stackable">
   
 <% players.forEach(function(player){ %>

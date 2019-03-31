@@ -44,8 +44,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use(function(req, res, next){//middleware that gives all routes access to current user object
    res.locals.currentUser = req.user; 
-//   res.locals.error   = req.flash("error");//gives all routes/views access to erro message variable
-    // res.locals.success   = req.flash("success");//gives all routes/views access to success message variable
+  res.locals.error   = req.flash("error");//gives all routes/views access to erro message variable
+    res.locals.success   = req.flash("success");//gives all routes/views access to success message variable
 
    next();
 });
