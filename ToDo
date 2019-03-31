@@ -2,10 +2,10 @@
 -position name changes
 -team selection dropdown
 -accomplishments_tab
--edit student post/put
+-edit student post/put  DONE
 -academic_tab for non-studens
 -image and video url and display
 -design
--authentication
--authorization
+-authentication DONE
+-authorization  NEED TO ADD MIDDLEWARE
 -

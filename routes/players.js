@@ -59,13 +59,18 @@ app.post("/players/", function(req,res){
                                 if(req.body.student[p] ===""){
                                 	    delete req.body.student[p];
                                     }
-                                
                             };
+                            // var student_no_key = Object.assign({}, req.body.student);
+                            // delete student_no_key.person_id;
+                            // console.log(req.body.student);
+                            // console.log("////////");
+                            // console.log(student_no_key);
                          connection.query('INSERT INTO students SET ?', req.body.student, function(err, result) {
                           if (err) throw err;
                         //   console.log(result);
                         });
                   }
+
                   console.log(result);
                 });
         });
@@ -139,7 +144,7 @@ app.put("/players/:id", function(req,res){
               connection.query('UPDATE athletes SET ? WHERE athletes.person_id = ?', [req.body.athlete, id], function(err, result) {
                   if (err) throw err;
                   if(req.body.student){
-                        //  req.body.student.person_id=person_id_result;
+                         req.body.student.person_id=id;
                           for(var p in req.body.student){
 
                                 if(req.body.student[p] ===""){
@@ -147,13 +152,18 @@ app.put("/players/:id", function(req,res){
                                     }
                                 
                             };
+                             var student_no_key = Object.assign({}, req.body.student);
+                            delete student_no_key.person_id;
                             console.log(req.body.student);
-                         connection.query('UPDATE students SET ? WHERE students.person_id = ?', [req.body.student, id], function(err, result) {
+                            console.log("////////");
+                            console.log(student_no_key);
+                            // console.log(req.body.student);
+                         connection.query('INSERT INTO students SET ? ON DUPLICATE KEY UPDATE ?', [req.body.student,student_no_key], function(err, result) {
                           if (err) throw err;
                         //   console.log(result);
                         });
                   }
-                  console.log(result);
+                  console.log("result::::::::::"+result);
                 });
         });
         
