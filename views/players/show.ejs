@@ -58,9 +58,11 @@
             <a class=" item tablinks"   onclick="openTab(event, 'athletic_tab')">
                 Athletic Info
             </a>
+            <%  if(player.school_type || player.school_name || player.grad_year){ %>
             <a class=" item tablinks"  onclick="openTab(event, 'academic_tab')" >
                 Academic Info
             </a>
+            <% }%>
             <a class="item tablinks"  onclick="openTab(event, 'accomplishments_tab')">
                 Accomplishments
              </a>
@@ -72,7 +74,9 @@
                 <div class="item">
             
                     <div class="content">
-                            <p class="header">DOB: <%=player.birthday %></p>
+                            <p class="header">DOB: <%= player.birthday.toLocaleDateString("en-US") %></p>
+                            <p class="header">DOB: <%= player.birthday.toISOString().slice(0,10) %></p>
+
                     </div>
                  </div>
                 <div class="item">

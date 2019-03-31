@@ -1,11 +1,11 @@
--coach sort/filter
--position name changes
+-coach sort/filter DONE
+-position name changes  DONE
 -team selection dropdown
 -accomplishments_tab
 -edit student post/put  DONE
--academic_tab for non-studens
+-academic_tab for non-studens DONE
 -image and video url and display
 -design
 -authentication DONE
 -authorization  NEED TO ADD MIDDLEWARE
--
+-height/weight imperial or metric

@@ -88,7 +88,9 @@
       </div>
       <div class="description">
         <%=player.last_name %>
-        <%=player.birthday %>
+        <% if(player.birthday){ %> 
+        <%= player.birthday.toISOString().slice(0,10) %>
+        <% } %>
         <%=player.primary_position %>
       </div>
     </div>
