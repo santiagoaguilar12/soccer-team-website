@@ -58,7 +58,7 @@ CREATE TABLE students(
 
 CREATE TABLE coaches(
     person_id INTEGER PRIMARY KEY,
-    role VARCHAR(50),
+    coaching_role VARCHAR(50),
     team VARCHAR(100),
     FOREIGN KEY(person_id) REFERENCES persons(id)
     ON DELETE CASCADE
@@ -92,7 +92,7 @@ INSERT INTO students (person_id, school_type, grad_year, school_name) VALUES
 ("1", "University", "2023", "University of Waterloo"),
 ("4", "High School", "2021", "All Saints CSS");
 
-INSERT INTO coaches (person_id, role, team) VALUES
+INSERT INTO coaches (person_id, coaching_role, team) VALUES
 ("5", "Director", "Academy"),
 ("6", "Assistant Coach", "U21 Boys");
 
@@ -103,3 +103,5 @@ INSERT INTO accomplishments (person_id,name_acc, text_acc, date_acc) VALUES
 ("1","SAT Subject Test","Perfect Scores in Math II and Physics","2018");
 
 SELECT * FROM persons;
+
+-- update users set admin = 1 where id = 1;

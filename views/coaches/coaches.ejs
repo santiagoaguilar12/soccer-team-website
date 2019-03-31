@@ -1,5 +1,47 @@
 <% include ../partials/header %>
 
+
+<div class="ui container">
+  <h1>Players</h1>
+<form class="ui form" action="/coaches" method="GET">
+  <div class="fields">
+    <div class="field">
+        <label>Sort By</label>
+        <div class="ui selection dropdown">
+            <input type="hidden" name="sort" value="<%=sort %>" onchange="this.form.submit()">
+            <i class="dropdown icon"></i>
+            <div class="default text">Sort By</div>
+            <div class="menu">
+                <div class="item"  data-value="last_name">Last Name</div>
+                <div class="item" data-value="team">Team</div>
+                <div class ="item" data-value="coaching_role"> Coaching Role</div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Filter By</label>
+        <div class="ui selection dropdown">
+            <input type="hidden" name="filter" value="<%=filter %>" onchange="this.form.submit()">
+            <i class="dropdown icon"></i>
+            <div class="default text">Filter By</div>
+            <div class="menu">
+                <div class="item"  data-value="none">None</div>
+                <div class="item"  data-value="U21 Boys">U21 Boys</div>
+                <div class="item" data-value="U17 Boys">U17 Boys</div>
+                <div class ="item" data-value="U17 Girls">U17 Girls</div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  
+</form>
+
+
+
+
+</div>
+
 <% if(currentUser && currentUser.admin === 1){ %>
     <div class="ui container"> 
       <h1>Coaches</h1>

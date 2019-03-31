@@ -25,9 +25,14 @@
     Coaches
   </a>
   <div class="right menu">
-    <a class="ui item">
-      Logout
-    </a>
+     <% if(!currentUser){ %>
+          <a class="ui item" href="/login">Login</a>
+          <a class="ui item" href="/register">Sign Up</a>
+      <% } else { %>
+          <a class="ui item">Signed In As <%= currentUser.username %></a>
+           <a class="ui item" href="/logout"> Logout</a>
+      <% } %>
+   
   </div>
 </div>
  <div class="ui container">

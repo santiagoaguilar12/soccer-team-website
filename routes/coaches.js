@@ -4,13 +4,23 @@ var express = require("express"),//requires express
     connection = require('./db');
     
 router.get("/",function(req,res){
-    var q = "SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id;";
+    var q = "SELECT * FROM persons JOIN coaches ON persons.id = coaches.person_id ";
+    if(req.query.filter && req.query.filter != "none"){
+        q+="WHERE team = '"+req.query.filter+"'";
+    }
+    if(req.query.sort){
+        q+=" ORDER BY "+req.query.sort;
+    }else{
+        q+=" ORDER BY last_name;";
+    }
+    console.log("???????????????????????");
+    console.log(q);
     connection.query(q,function(err, result) {
       if (err) throw err;
       var coaches=result;
         //  res.send("You've reached the home page. There are "+count+" users");
          console.log(coaches);
-        res.render("coaches/coaches",{coaches:coaches});
+        res.render("coaches/coaches",{coaches:coaches,sort:req.query.sort, filter: req.query.filter});
 
     });
 });
