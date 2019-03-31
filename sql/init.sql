@@ -27,7 +27,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE athletes(
-    person_id INTEGER,
+    person_id INTEGER PRIMARY KEY,
     birthday DATE,
     primary_position VARCHAR(100),
     secondary_position VARCHAR(100),
@@ -45,7 +45,7 @@ CREATE TABLE athletes(
 
 
 CREATE TABLE students(
-    person_id INTEGER,
+    person_id INTEGER PRIMARY KEY,
     school_type VARCHAR(255),
     school_name VARCHAR(255),
     grad_year YEAR,
@@ -57,7 +57,7 @@ CREATE TABLE students(
 );
 
 CREATE TABLE coaches(
-    person_id INTEGER,
+    person_id INTEGER PRIMARY KEY,
     role VARCHAR(50),
     team VARCHAR(100),
     FOREIGN KEY(person_id) REFERENCES persons(id)
