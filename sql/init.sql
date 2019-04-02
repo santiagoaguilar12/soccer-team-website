@@ -68,7 +68,7 @@ CREATE TABLE accomplishments(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     person_id INTEGER,
     name_acc VARCHAR(150),
-    text_acc VARCHAR(255),
+    text_acc VARCHAR(750),
     date_acc YEAR,
     FOREIGN KEY(person_id) REFERENCES persons(id)
     ON DELETE CASCADE
