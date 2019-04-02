@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <div class="ui container">
-    <form class="ui form" method="POST" action="/players/:id/accomplishments/">
+    <form class="ui form" method="POST" action="/players/<%= person.id %>/accomplishments/">
         <h2>Add an Accomplishment</h2>
 
         <div class="fields">
@@ -10,7 +10,7 @@
             </div>
             <div class="field">
                 <label> Accomplishment Year</label>
-                <input type="number" name="accomplishment[text_acc]" min="1900" max="2099" step="1" placeholder="Year" />
+                <input type="number" name="accomplishment[date_acc]" min="1900" max="2099" step="1" placeholder="Year" />
             </div>
         </div>
         <div class="fields">
