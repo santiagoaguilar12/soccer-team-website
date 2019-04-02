@@ -1,7 +1,11 @@
 module.exports = function(app,mysql,connection,passport){
     
-    app.get("/players/:id/accomplishments/new", function(req,res){
+    app.get(["/players/:id/accomplishments/new","/coaches/:id/accomplishments/new"], function(req,res){
         var person_id = req.params.id;
+        console.log("#################################################################");
+        console.log(req.originalUrl);
+                console.log(req.url);
+                                console.log(req.path);
         var q = "SELECT * FROM persons where id = "+ person_id;
         connection.query(q,function(err, result) {
               if (err) throw err;
@@ -9,7 +13,7 @@ module.exports = function(app,mysql,connection,passport){
                 //  res.send("You've reached the home page. There are "+count+" users");
                 //  console.log(person);
                 //  console.log("id:"+ person.id);
-                // console.log("role:"+ person.role);
+                console.log("role:"+ person.role);
 
                 res.render("accomplishments/new",{person:person});
         
@@ -17,9 +21,13 @@ module.exports = function(app,mysql,connection,passport){
         // res.send("This is the new acc page"+person_id)
     })
     
-    app.post("/players/:id/accomplishments",function(req,res){
-        console.log(req.body);
-        console.log(req.body);
+    app.post(["/players/:id/accomplishments","/coaches/:id/accomplishments"],function(req,res){
+        console.log(req.body+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        console.log(req.originalUrl);
+                console.log(req.url);
+                                console.log(req.path);
+
+
 
         for(var p in req.body.accomplishment){
 
@@ -33,8 +41,15 @@ module.exports = function(app,mysql,connection,passport){
         connection.query("INSERT INTO accomplishments SET ?", req.body.accomplishment, function(err,result){
             if (err) throw err;
         })
+        if(req.originalUrl.includes("coaches")){
+                    res.redirect("/coaches/" + req.params.id);
 
-        res.redirect("/players/" + req.params.id)
+        }else if(req.originalUrl.includes("players")){
+                    res.redirect("/players/" + req.params.id);
+        }else{
+                    res.redirect("/");
+
+        }
     })
 
 }
