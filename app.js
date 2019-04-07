@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var app     =express();
 var methodOverride= require("method-override");//needed for put and delete requests
 var bodyParser= require("body-parser");
-// var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 3000;
 var passport = require('passport');
 var flash    = require('connect-flash');
 
@@ -90,7 +90,7 @@ require('./routes/players.js')(app,mysql,connection,passport); // load our route
 require('./routes/accomplishments.js')(app,mysql,connection,passport);
 
 require('./routes/auth.js')(app,mysql,connection,passport);
-app.listen(process.env.PORT, process.env.IP, function(){//starts server. 
+app.listen(port, function(){//starts server. 
     //process.env.PORT--> uses whatever port is in the environment variable PORT 
     //process.env.ID-->uses whatever IP is in the environment variable ID 
     
