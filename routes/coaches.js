@@ -59,6 +59,7 @@ router.post("/", function(req,res){
                 });
         });
         
+    req.flash("success", "You have succesfully added a coach");
 
     res.redirect("/coaches");
 });
@@ -127,6 +128,7 @@ router.put("/:id", function(req,res){
                 });
         });
         
+    req.flash("success", "You have succesfully edited a coach");
 
     res.redirect("/coaches/"+id);
 })
@@ -137,6 +139,8 @@ router.delete("/:id",function(req,res){
     connection.query(q, function(err, result) {
         if (err) throw err;
     });
+    req.flash("success", "You have succesfully deleted a coach");
+
     res.redirect("/coaches");
 });
 

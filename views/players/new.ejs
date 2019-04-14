@@ -69,7 +69,20 @@
                 <div class="fields">
                    <div class="field">
                         <label>Team</label>
-                        <input type="text" name="athlete[team]" placeholder="Team">
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="athlete[team]">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Team</div>
+                            <div class="menu">
+                                <div class="item" data-value="U11 Boys/Girls">U11 Boys/Girls</div>
+                                <div class="item" data-value="U13 Boys/Girls">U13 Boys/Girls</div>    
+                                <div class="item" data-value="U15 Boys">U15 Boys</div>
+                                <div class="item" data-value="U17 Boys">U17 Boys</div>
+                                <div class="item" data-value="U21 Boys">U21 Boys</div>
+                                <div class="item" data-value="League 1 Men">League 1 Men</div>
+                                <div class="item" data-value="U21 Women">U21 Women</div>    
+                            </div>
+                        </div>
                       </div>
                     <div class="field">
                         <label>Primary Position</label>
