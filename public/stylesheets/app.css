@@ -1,3 +1,25 @@
+body {
+  /* height: 100%; */
+  background-image: url("https://images.unsplash.com/photo-1544914379-806667cd9489?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
+  background-color: #000000;
+  /* opacity: 0.5; */
+ }
+
+.ui.card, .ui.cards>.card{
+  background: #eaeaea;
+}
+ .menu{
+   margin-bottom:0;
+ }
+ .container{
+   /* height: 100vh; */
+   border-radius: 5px;
+   /* height: 100vh; */
+   background-color: rgba(255,255,255,1);
+   opacity: 1.0;
+ }
+
+
 .tabcontent {
   display: none;
   text-transform: capitalize;

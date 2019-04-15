@@ -63,9 +63,9 @@
   
 <!--</form>-->
 
-</div>
+
 <% if(currentUser && currentUser.admin === 1){ %>
-    <div class="ui right aligned container"> 
+    <div class="ui right aligned "> 
         <a class="ui right labeled icon button" href="/players/new">
           <i class="user plus icon"></i>
           Add Player
@@ -73,7 +73,7 @@
     </div>
 <% }%>
 
-<div class="ui link four container cards stackable">
+<div class="ui link four  cards stackable">
   
 <% players.forEach(function(player){ %>
     <!--<a href="/players/<%=player.id %>">-->
@@ -110,5 +110,5 @@
     
 <% }); %>
 
-
+</div>
 <% include ../partials/footer %>

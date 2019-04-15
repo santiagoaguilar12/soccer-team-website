@@ -2,7 +2,7 @@
 
 
 <div class="ui container">
-  <h1>Players</h1>
+  <h1>Coaches</h1>
 <form class="ui form" action="/coaches" method="GET">
   <div class="fields">
     <div class="field">
@@ -40,11 +40,10 @@
 
 
 
-</div>
+
 
 <% if(currentUser && currentUser.admin === 1){ %>
-    <div class="ui container"> 
-      <h1>Coaches</h1>
+    <div class="ui "> 
       <a class="ui right labeled icon button" href="/coaches/new">
         <i class="user plus icon"></i>
         Add Coach
@@ -54,7 +53,7 @@
 
 
 
-<div class="ui link four container cards stackable">
+<div class="ui link four  cards stackable">
 <% coaches.forEach(function(coach){ %>
 
     <div class="card">
@@ -84,5 +83,5 @@
 <% }); %>
 <div class="ui horizontal divider">
 </div>
-
+</div>
 <% include ../partials/footer %>

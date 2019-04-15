@@ -1,21 +1,59 @@
-<% include ./partials/header %>
 
-<h1>Home Page</h1>
-<div class="container">
+<html>
+    <head>
+        <title>Soccer Site</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>  
+        <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/app.css"> -->
+        <link type="text/css" rel="stylesheet" href="/stylesheets/home.css">
+
+        <script>
+         
+        </script>
+        
+    </head>
+    <body>
+   
+ <div class="ui container">
+        <% if(error && error.length >0){ %> <!--if error exists and contains something/not empty. empty is truthy -->
+            <div class="ui red message" role="alert"><%= error %></div> <!--flash message in all routes -->
+        <% }if(success && success.length >0) { %>
+            <div class="ui green message" role="alert"><%= success %></div> <!--flash message in all routes -->
+        <% } %>
+    </div>
+    
+<div id="home-content">
+    <div class="container">
         <div class=" ">
-            <h1><span class="fa fa-lock"></span> Node Authentication</h1>
+            <img src="https://static.wixstatic.com/media/cca316_0770cb8a4c524282b988c73dc7a87d15~mv2.png/v1/fill/w_130,h_130,al_c,q_80/cca316_0770cb8a4c524282b988c73dc7a87d15~mv2.webp" alt="">
+            <h1><span class="fa fa-lock"></span> Welcome to Master's Futbol Academy</h1>
 
-            <p>Login or Register with:</p>
+            <!-- <p>Login or Register with:</p>
+            <div class="ui medium inverted buttons">
+                    <a href="/login" class="medium ui inverted button" ><span class="fa fa-user"></span>  Login</a>
 
-            <a href="/login" class="massive ui button" ><span class="fa fa-user"></span> Local Login</a>
-            <a href="/register" class="massive ui button"  ><span class="fa fa-user"></span> Local Signup</a>
+                <a href="/register" class="medium ui inverted button"  ><span class="fa fa-user"></span>  Signup</a>
+
+            </div> -->
         </div>
     </div>
-<a class="massive ui button" href="/players">
+<a class="massive ui inverted button" href="/players">
     Players
 </a>
-<a class="massive ui button" href="/coaches">
+<a class="massive ui inverted button" href="/coaches">
     Coaches
 </a>
+</div>
 
+
+<ul class="slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 <% include ./partials/footer %>
