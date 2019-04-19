@@ -14,7 +14,7 @@ var flash    = require('connect-flash');
 require('./config/passport')(passport); // pass passport for configuration
 
 // var playerRoutes    = require("./routes/players"),//requires each route. Onlye the first step of refactoring clean up app.js
-var     coachRoutes = require("./routes/coaches");
+// var     coachRoutes = require("./routes/coaches");
 //     connection = require('./routes/db');
  var connection = require('./routes/db');   
  var middlewareObj = require("./middleware/index");
@@ -86,7 +86,8 @@ app.get("/",function(req,res){
 // })
 
 // app.use("/players", playerRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
-app.use("/coaches", coachRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
+// app.use("/coaches", coachRoutes);//for refactoring. first part is the part that all routes have in common. Uses routes variables defined above
+require("./routes/coaches.js")(app,mysql,connection,passport,middlewareObj);
 require('./routes/players.js')(app,mysql,connection,passport,middlewareObj); // load our routes and pass in our app and fully configured passport
 require('./routes/accomplishments.js')(app,mysql,connection,passport, middlewareObj);
 
