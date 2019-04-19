@@ -1,4 +1,4 @@
-module.exports = function(app,mysql,connection,passport){
+module.exports = function(app,mysql,connection,passport,middlewareObj){
     
    app.get("/players/",function(req,res){
     var q = "SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id ";
@@ -23,11 +23,11 @@ module.exports = function(app,mysql,connection,passport){
     });
 });
 
-app.get("/players/new", function(req,res){
+app.get("/players/new",middlewareObj, function(req,res){
     res.render("players/new");
 })
 
-app.post("/players/", function(req,res){
+app.post("/players/",middlewareObj, function(req,res){
     console.log("*******************************************************");
     console.log(req.body);
     console.log("*******************************************************");
@@ -100,7 +100,7 @@ app.get("/players/:id", function(req, res){
     });
 });
 
-app.get("/players/:id/edit", function(req, res) {
+app.get("/players/:id/edit",middlewareObj, function(req, res) {
     var id=req.params.id;
     var q="SELECT * FROM persons JOIN athletes ON persons.id = athletes.person_id LEFT JOIN students ON persons.id = students.person_id WHERE persons.id ="+id+" ;";
         // q+="SELECT * FROM accomplishments WHERE person_id =" +id+";";
@@ -120,7 +120,7 @@ app.get("/players/:id/edit", function(req, res) {
     });
 });
 
-app.put("/players/:id", function(req,res){
+app.put("/players/:id",middlewareObj, function(req,res){
     var id=req.params.id;
      for(var p in req.body.person){
 
@@ -172,7 +172,7 @@ app.put("/players/:id", function(req,res){
     res.redirect("/players/"+id);
 });
 
-app.delete("/players/:id",function(req,res){
+app.delete("/players/:id",middlewareObj,function(req,res){
     var id=req.params.id;
     var q="DELETE FROM persons WHERE id = "+id+" ;";
     connection.query(q, function(err, result) {

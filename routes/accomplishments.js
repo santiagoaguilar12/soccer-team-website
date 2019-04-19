@@ -1,6 +1,6 @@
-module.exports = function(app,mysql,connection,passport){
+module.exports = function(app,mysql,connection,passport, middlewareObj){
     
-    app.get(["/players/:id/accomplishments/new","/coaches/:id/accomplishments/new"], function(req,res){
+    app.get(["/players/:id/accomplishments/new","/coaches/:id/accomplishments/new"],middlewareObj, function(req,res){
         var person_id = req.params.id;
         console.log("#################################################################");
         console.log(req.originalUrl);
@@ -21,7 +21,7 @@ module.exports = function(app,mysql,connection,passport){
         // res.send("This is the new acc page"+person_id)
     })
     
-    app.post(["/players/:id/accomplishments","/coaches/:id/accomplishments"],function(req,res){
+    app.post(["/players/:id/accomplishments","/coaches/:id/accomplishments"],middlewareObj,function(req,res){
         console.log(req.body+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         console.log(req.originalUrl);
                 console.log(req.url);
