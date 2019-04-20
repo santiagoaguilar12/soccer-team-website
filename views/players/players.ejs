@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="ui container">
+<div class="ui container" id="container-grid">
   <h1>Players</h1>
 <form class="ui form" action="/players" method="GET">
   <div class="fields">
@@ -73,7 +73,7 @@
     </div>
 <% }%>
 
-<div class="ui link four  cards stackable">
+<div class="ui link four  cards doubling">
   
 <% players.forEach(function(player){ %>
     <!--<a href="/players/<%=player.id %>">-->

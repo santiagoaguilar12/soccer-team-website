@@ -1,4 +1,7 @@
+
+
 $(document).ready(function () {
+  $(document).resize();
     $('.tabular .item').click(function(){
       $('.tabular .active ').removeClass('active');
       $(this).addClass('active');
@@ -53,3 +56,29 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+$(window).resize(function(){
+  if ($("body").width() < 767) {
+    // $('#tab-menu').addClass('inverted');
+    $('#tab-menu').addClass('icon');
+    $('#tab-menu').addClass('large');
+    // $('#tab-menu').addClass('borderless');
+
+    // $('#tab-menu').addClass('labeled');
+
+    $('#tab-menu').removeClass('tabular');
+    $('.menu-text').hide();
+  } else {
+    $('.menu-text').show();
+
+    // $('#tab-menu').removeClass('inverted');
+    $('#tab-menu').removeClass('icon');
+    // $('#tab-menu').removeClass('labeled');
+    $('#tab-menu').removeClass('large');
+
+
+
+    $('#tab-menu').addClass('tabular');
+  
+  }
+})

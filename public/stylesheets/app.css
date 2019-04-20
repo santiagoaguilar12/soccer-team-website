@@ -12,6 +12,7 @@ body {
    margin-bottom:0;
  }
  .container{
+   padding: 1em;
    /* height: 100vh; */
    border-radius: 5px;
    /* height: 100vh; */
@@ -19,13 +20,29 @@ body {
    opacity: 1.0;
  }
 
+.ui.grid{
+  padding: 1em;
+}
 
+#tab-menu .item{
+  padding: 0 1.5em;
+}
 .tabcontent {
   display: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   
+}
+
+.tabcontent .item{
+  margin: 0.5em;
 }
 
 /*#athletic_tab{*/
 /*    display: none;*/
 /*}*/
+
+/* @media screen and (max-width: 768px) {
+  .menu-text{
+    display: none;
+  }
+} */
