@@ -2,8 +2,8 @@
 <div class="ui container">
 <% if(currentUser && currentUser.admin === 1){ %>
     <div class="ui right aligned container"> 
-      <div class="ui buttons">
-          <a class="ui  labeled icon button yellow inverted " href="/players/<%=player.id %>/edit">
+      <div class="ui mini buttons">
+          <a class="ui  labeled icon button edit-button inverted " href="/players/<%=player.id %>/edit">
             <i class="edit icon"></i>
             Edit Player
           </a>
@@ -205,8 +205,28 @@
 
     </div>
     <div class=" tabcontent" id="accomplishments_tab">
-      <a href="/players/<%=player.id %>/accomplishments/new" class="ui button">New Accomplishment</a>
+        <% if(currentUser && currentUser.admin === 1){ %>
+          <div>
+              <a href="/players/<%=player.id %>/accomplishments/new" class="ui labeled icon button basic green"> <i class="user plus icon"></i>New </a>
+          </div>
+          <div class="ui divider"></div>
+
+      <% } %>
+
             <% accomplishments.forEach(function(accomplishment){ %>
+              <% if(currentUser && currentUser.admin === 1){ %>
+
+              <a href="/players/<%=player.id %>/accomplishments/<%=accomplishment.id%>/edit" class="ui  labeled icon button edit-button  inverted mini">
+                <i class="edit icon"></i>
+                Edit
+              </a>
+              <form class=" form" action="/players/<%= player.id %>/accomplishments/<%=accomplishment.id%>?_method=DELETE" method="POST">
+                <button class="ui  labeled icon button red mini inverted">
+                <i class="trash icon"></i>
+                Delete 
+              </button>
+              </form>
+              <% } %>
             <h3> <%=accomplishment.name_acc %></h3>
             <p> <%=accomplishment.date_acc %></p>
             <p> <%=accomplishment.text_acc %></p>

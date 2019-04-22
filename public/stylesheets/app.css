@@ -4,6 +4,10 @@ body {
   background-color: #000000;
   /* opacity: 0.5; */
  }
+ .ui.inverted.button.edit-button{
+   color: #FFC107;
+   box-shadow: 0 0 0 2px #FFC107 inset!important;
+ }
 
 .ui.cards{
   margin: 0;
