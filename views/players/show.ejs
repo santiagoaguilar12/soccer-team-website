@@ -2,22 +2,25 @@
 <div class="ui container">
 <% if(currentUser && currentUser.admin === 1){ %>
     <div class="ui right aligned container"> 
-      <a class="ui right labeled icon button" href="/players/<%=player.id %>/edit">
-        <i class="edit icon"></i>
-        Edit Player
-      </a>
-      <form class="ui form" action="/players/<%= player.id %>?_method=DELETE" method="POST">
-          <button class="ui right labeled icon button">
-        <i class="trash icon"></i>
-        Delete Player
-      </button>
-      </form>
+      <div class="ui buttons">
+          <a class="ui  labeled icon button yellow inverted " href="/players/<%=player.id %>/edit">
+            <i class="edit icon"></i>
+            Edit Player
+          </a>
+          <form class=" form" action="/players/<%= player.id %>?_method=DELETE" method="POST">
+            <button class="ui  labeled icon button red inverted">
+            <i class="trash icon"></i>
+            Delete Player
+          </button>
+          </form>
+      </div>
+      
     </div>
 <% }%>
 
 
 
-<div class=" ui grid container">
+<div class=" ui grid container stackable">
     <div class="row">
         <div class="four wide column">
                   <img class="ui image bordered medium" src="<%=player.image_url %>">
@@ -202,6 +205,7 @@
 
     </div>
     <div class=" tabcontent" id="accomplishments_tab">
+      <a href="/players/<%=player.id %>/accomplishments/new" class="ui button">New Accomplishment</a>
             <% accomplishments.forEach(function(accomplishment){ %>
             <h3> <%=accomplishment.name_acc %></h3>
             <p> <%=accomplishment.date_acc %></p>

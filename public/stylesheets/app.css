@@ -5,8 +5,12 @@ body {
   /* opacity: 0.5; */
  }
 
+.ui.cards{
+  margin: 0;
+}
 .ui.card, .ui.cards>.card{
   background: #eaeaea;
+  /* margin: 0; */
 }
  .menu{
    margin-bottom:0;

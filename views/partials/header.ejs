@@ -14,7 +14,7 @@
         
     </head>
     <body>
-    <div class="ui menu head-menu">
+    <div class="ui menu fluid five  head-menu">
   <a class="active item" href="/">
     Home
   </a>
@@ -29,7 +29,7 @@
           <a class="ui item" href="/login">Login</a>
           <a class="ui item" href="/register">Sign Up</a>
       <% } else { %>
-          <a class="ui item">Signed In As <%= currentUser.username %></a>
+          <a class="ui item"> <%= currentUser.username %></a>
            <a class="ui item" href="/logout"> Logout</a>
       <% } %>
    

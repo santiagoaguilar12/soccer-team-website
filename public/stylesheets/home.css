@@ -15,7 +15,7 @@ body {
   We use padding-top to vertically center our div, since it's contents take up quite a bit of space we use 40vh (view height) instead of 50, this way the content looks more visually centered */
     position: relative;
     text-align: center;
-    padding-top: 25vh;
+    padding-top: 15vh;
   }
   
   #home-content h1, p {
@@ -26,6 +26,9 @@ body {
       height: 15em;
   }
 
+  #mfa-logo{
+    height: 15em;
+  }
   #home-content .button{
       margin: 3em 1em;
       /* margin-bottom: 3em;
@@ -118,3 +121,10 @@ body {
   .no-cssanimations .slideshow li {
       opacity: 1;
   }
+
+  @media screen and (max-width: 412px) {
+  #home-content .button{
+    margin: 1em 1em 0.3em;
+    padding: 0.5em 1.2em;
+  }
+}

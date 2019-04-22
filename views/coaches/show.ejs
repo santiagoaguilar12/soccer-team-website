@@ -2,18 +2,21 @@
 
 <div class="ui container">
 <% if(currentUser && currentUser.admin === 1){ %>
-    <div class="ui right aligned "> 
-  <a class="ui right labeled icon button" href="/coaches/<%=coach.id %>/edit">
-    <i class="edit icon"></i>
-    Edit Coach
-  </a>
-  <form class="ui form" action="/coaches/<%= coach.id %>?_method=DELETE" method="POST">
-      <button class="ui right labeled icon button" >
-    <i class="trash icon"></i>
-    Delete Coach
-  </button>
-  </form>
-</div>
+  <div class="ui right aligned container"> 
+      <div class="ui buttons">
+          <a class="ui  labeled icon button yellow inverted " href="/coaches/<%=coach.id %>/edit">
+            <i class="edit icon"></i>
+            Edit Player
+          </a>
+          <form class=" form" action="/coaches/<%= coach.id %>?_method=DELETE" method="POST">
+            <button class="ui  labeled icon button red inverted">
+            <i class="trash icon"></i>
+            Delete Player
+          </button>
+          </form>
+      </div>
+      
+    </div>
 <% }%>
 
 
@@ -49,13 +52,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="ui tabular menu ">
+        <div class="ui tabular menu " id="tab-menu">
             <a class="active item tablinks"  id="defaultOpen" onclick="openTab(event, 'personal_tab')">
-                Personal Info
+                <i class="info circle icon"></i>
+              <div class="menu-text">
+                Personal 
+              </div>
             </a>
            
             <a class="item tablinks"  onclick="openTab(event, 'accomplishments_tab')">
+                <i class="trophy icon"></i>
+              <div class="menu-text">
                 Accomplishments
+              </div>
              </a>
         </div>
     </div>
@@ -82,6 +91,8 @@
     </div>
     
     <div class=" tabcontent" id="accomplishments_tab">
+        <a href="/coaches/<%=coach.id %>/accomplishments/new" class="ui button">New Accomplishment</a>
+
                  <% accomplishments.forEach(function(accomplishment){ %>
             <h3> <%=accomplishment.name_acc %></h3>
             <p> <%=accomplishment.date_acc %></p>

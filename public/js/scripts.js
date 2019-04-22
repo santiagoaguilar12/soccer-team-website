@@ -78,7 +78,18 @@ $(window).resize(function(){
 
 
 
-    $('#tab-menu').addClass('tabular');
+    $('#tab-menu').addClass('tabular');  
+  }
+  if($("body").width() < 400 ){
+    $(".ui.head-menu").addClass("mini");
+  }else{
+    $(".ui.head-menu").removeClass("mini");
+  }
   
+})
+
+$(window).resize(function(){
+  if ($("body").width() < 400){
+
   }
 })
