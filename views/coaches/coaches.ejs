@@ -3,7 +3,7 @@
 
 <div class="ui container">
   <h1>Coaches</h1>
-<form class="ui form" action="/coaches" method="GET">
+<form class="ui form"  id="filters-form" action="/coaches" method="GET">
   <div class="fields">
     <div class="field">
         <label>Sort By</label>
@@ -32,6 +32,18 @@
             </div>
         </div>
     </div>
+    <div class="field">
+        <label>View</label>
+        <div class="ui selection dropdown">
+            <input type="hidden" name="view"  value ="<%=view%>" onchange="this.form.submit()">
+            <i class="dropdown icon"></i>
+            <div class="default text">View </div>
+            <div class="menu">
+                <div class="item"  data-value="cards">Cards</div>
+                <div class="item"  data-value="list">List</div>
+            </div>
+        </div>
+    </div>
     
   </div>
   
@@ -52,7 +64,7 @@
 <% }%>
 
 
-
+<% if(view === "cards"){ %>
 <div class="ui link four  cards doubling">
 <% coaches.forEach(function(coach){ %>
 
@@ -66,22 +78,52 @@
         <a><%=coach.team %></a>
       </div>
       <div class="description">
-        Matthew is an interior designer living in New York.
+        <%= coach.coaching_role %>
       </div>
     </div>
     <div class="extra content">
-      <span class="right floated">
-        Joined in 2013
-      </span>
-      <span>
-        <i class="user icon"></i>
-        75 Friends
-      </span>
-    </div>
+        <span class="right floated">
+            <p class="header">
+           
+            <% if(coach.email){ %>
+               <a href="mailto: <%=coach.email %>"> <i class="at icon"></i></a>
+               
+              <% } %>
+              
+            </p>
+        </span>
+        <!-- <span>
+          <i class="user icon"></i>
+          75 Friends
+        </span> -->
+      </div>
   </div>
 
 <% }); %>
+
 <div class="ui horizontal divider">
 </div>
 </div>
+
+
+
+<% } else if(view="list"){ %>
+<div class="ui divided selection list">
+    <% coaches.forEach(function(coach){ %>
+      <a class="item" href="/coaches/<%=coach.id %>">
+          <img class="ui avatar image" src="<%=coach.image_url %>">
+          <div class="content">
+              <div class="header"> <%=coach.first_name %> <%=coach.last_name %> </div>
+              <div class="description"> <strong><%= coach.coaching_role %></strong>  for the <strong><%= coach.team %></strong> </div>
+
+
+          </div>
+
+
+        </a>
+    <% }); %>
+
+</div>
+<% } %>
+
 <% include ../partials/footer %>

@@ -89,7 +89,10 @@ $(window).resize(function(){
 })
 
 $(window).resize(function(){
-  if ($("body").width() < 400){
+  if ($("body").width() < 600){
+    $('#filters-form .selection.dropdown').addClass('mobile-filter-fields');  
+  }else{
+    $('#filters-form .selection.dropdown').removeClass('mobile-filter-fields');
 
   }
 })

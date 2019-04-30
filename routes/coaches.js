@@ -10,6 +10,10 @@ module.exports = function(app,mysql,connection,passport,middlewareObj){
         }else{
             q+=" ORDER BY last_name;";
         }
+        if(!req.query.view){
+            req.query.view = "cards";
+            console.log(req.query.view);
+        }
         console.log("???????????????????????");
         console.log(q);
         connection.query(q,function(err, result) {
@@ -17,7 +21,7 @@ module.exports = function(app,mysql,connection,passport,middlewareObj){
           var coaches=result;
             //  res.send("You've reached the home page. There are "+count+" users");
              console.log(coaches);
-            res.render("coaches/coaches",{coaches:coaches,sort:req.query.sort, filter: req.query.filter});
+            res.render("coaches/coaches",{coaches:coaches,sort:req.query.sort, filter: req.query.filter, view:req.query.view});
     
         });
     });

@@ -27,7 +27,7 @@
 
         </div>
         <div class=" twelve wide column">
-            <h1><%=player.jersey_num %><%=player.first_name %> <%=player.last_name %></h1>
+            <h1><%=player.jersey_num %>  <%=player.first_name %> <%=player.last_name %></h1>
             <div class="ui middle aligned divided list">
                 <div class="item">
             
@@ -47,9 +47,14 @@
                   </div>
                   <div class="item">
                     <div class="content">
-                      <p class="header">Email: <%=player.email %></p>
+                      <p class="header">Email: <a href="mailto: <%=player.email %>"> <%=player.email %></a></p>
                     </div>
                   </div>
+                  <div class="item">
+                      <div class="content">
+                        <p class="header">Youtube URL: <a href="<%=player.video_url %>" target="_blank"><%=player.video_url %></a> </p>
+                      </div>
+                    </div>
             </div>
 
         </div>
@@ -84,6 +89,7 @@
              </a>
         </div>
     </div>
+    <div class="row">
     <div class="tabcontent  " id="personal_tab" >
          <div class="ui middle aligned divided list">
                 <div class="item">
@@ -108,7 +114,7 @@
                   </div>
                   <div class="item">
                     <div class="content">
-                      <p class="header">Email: <%=player.email %></p>
+                      <p class="header">Email: <a href="mailto: <%=player.email %>"> <%=player.email %></a></p>
                     </div>
                   </div>
                   <div class="item">
@@ -154,12 +160,12 @@
                   </div>
                   <div class="item">
                     <div class="content">
-                      <p class="header">Video URL: <%=player.video_url %></p>
+                        <p class="header">Youtube URL: <a href="<%=player.video_url %>" target="_blank"><%=player.video_url %></a> </p>
                     </div>
                   </div>
                   <div class="item">
                     <div class="content">
-                      <p class="header">Profile: <%=player.profile_doc %></p>
+                      <p class="header">Profile: <a href="<%=player.profile_doc %>" target="_blank"><%=player.first_name %> <%=player.last_name %> Profile</a> </p>
                     </div>
                   </div>
             </div>
@@ -207,33 +213,51 @@
     <div class=" tabcontent" id="accomplishments_tab">
         <% if(currentUser && currentUser.admin === 1){ %>
           <div>
-              <a href="/players/<%=player.id %>/accomplishments/new" class="ui labeled icon button basic green"> <i class="user plus icon"></i>New </a>
+              <a href="/players/<%=player.id %>/accomplishments/new" class="ui labeled icon button basic green"> <i class=" plus icon"></i>New </a>
           </div>
           <div class="ui divider"></div>
 
       <% } %>
+            <div class="ui divided list">
+                <% accomplishments.forEach(function(accomplishment){ %>
+                  <div class="item">
+                      <% if(currentUser && currentUser.admin === 1){ %>
+                        <div class="right floated content">
+                            <a href="/players/<%=player.id %>/accomplishments/<%=accomplishment.id%>/edit" class="ui   icon button edit-button  inverted mini">
+                              <i class="edit icon"></i>
+                              
+                            </a>
+                            <form class=" form delete-button" action="/players/<%= player.id %>/accomplishments/<%=accomplishment.id%>?_method=DELETE" method="POST">
+                              <button class="ui   icon button red mini inverted">
+                              <i class="trash icon"></i>
+                               
+                            </button>
+                            </form>
+                          </div>
+                      
+                      <% } %>
+                      <div class="content">
+                        <div class="header">
+                            <strong><%=accomplishment.name_acc %></strong>  - <%=accomplishment.date_acc %>
 
-            <% accomplishments.forEach(function(accomplishment){ %>
-              <% if(currentUser && currentUser.admin === 1){ %>
+                        </div>
+                        <div class="description">
+                             
+                            <p> <%=accomplishment.text_acc %></p>
+                        </div>
+                          
+                      </div>
+                   
+                    <!-- <div class="ui divider"></div> -->
+                  </div>
 
-              <a href="/players/<%=player.id %>/accomplishments/<%=accomplishment.id%>/edit" class="ui  labeled icon button edit-button  inverted mini">
-                <i class="edit icon"></i>
-                Edit
-              </a>
-              <form class=" form" action="/players/<%= player.id %>/accomplishments/<%=accomplishment.id%>?_method=DELETE" method="POST">
-                <button class="ui  labeled icon button red mini inverted">
-                <i class="trash icon"></i>
-                Delete 
-              </button>
-              </form>
-              <% } %>
-            <h3> <%=accomplishment.name_acc %></h3>
-            <p> <%=accomplishment.date_acc %></p>
-            <p> <%=accomplishment.text_acc %></p>
-            <div class="ui divider"></div>
-            <% }) %>
+                    <% }) %>
+                  
+            </div>
+            
 
     </div>
+  </div>
     
 </div>
 

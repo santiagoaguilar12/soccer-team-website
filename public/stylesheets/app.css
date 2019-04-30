@@ -37,14 +37,21 @@ body {
 }
 .tabcontent {
   display: none;
+  width: inherit;
   /* text-transform: capitalize; */
   
 }
 
+.delete-button{
+  display: inline!important;
+}
 .tabcontent .item{
   margin: 0.5em;
 }
 
+.mobile-filter-fields{
+  min-width: 6em !important;
+}
 /*#athletic_tab{*/
 /*    display: none;*/
 /*}*/
